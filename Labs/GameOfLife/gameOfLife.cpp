@@ -20,8 +20,13 @@ Should create structs and populate the array
 */
 void initCells(Cell* board[][10], int boardSize)
 {
-    Cell* ptr1;
-    ptr1 = board[10][10];
+    Cell* newCell = new Cell();
+    for (int i = 0; i < boardSize + 1; i++) {
+        for (int j = 0; j < boardSize + 1; j++) {
+            board[i][j] = 0;
+        }
+    }
+    delete newCell;
 }
 
 /*
