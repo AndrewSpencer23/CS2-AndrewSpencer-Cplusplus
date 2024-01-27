@@ -20,7 +20,8 @@ Should create structs and populate the array
 */
 void initCells(Cell* board[][10], int boardSize)
 {
-
+    Cell* ptr1;
+    ptr1 = board[10][10];
 }
 
 /*
@@ -30,7 +31,8 @@ Structure of file should consist of 10 lines of 0 or 1 to indicate cell state
 */
 void readBoard(Cell* board[][10], int boardSize) 
 {
-
+    ifstream fin;
+    fin.open("board0.txt");
 }
 
 /*
