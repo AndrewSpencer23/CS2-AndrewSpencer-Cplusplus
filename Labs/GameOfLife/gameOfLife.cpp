@@ -38,6 +38,11 @@ void readBoard(Cell* board[][10], int boardSize)
 {
     ifstream fin;
     fin.open("board0.txt");
+
+    int* ptr1;
+    int tmpNum;
+    ptr1 = &tmpNum;
+
 }
 
 /*
