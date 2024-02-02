@@ -42,6 +42,11 @@ void readBoard(Cell* board[][10], int boardSize)
     cin >> fileName;
     ifstream fin;
     fin.open(fileName);
+
+
+    // while (getline(fin, )) {
+
+    // }
 }
 
 /*
@@ -49,7 +54,11 @@ Function to print out all cells to cout
 */
 void printCells(Cell* board[][10], int boardSize)
 {
-
+    for (int i = 0; i < boardSize; i++) {
+        for (int j = 0; j < boardSize; j++) {
+            cout << board[i][j];
+        }
+    }
 }
 
 /*
