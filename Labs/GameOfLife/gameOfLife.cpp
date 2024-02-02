@@ -20,13 +20,14 @@ Should create structs and populate the array
 */
 void initCells(Cell* board[][10], int boardSize)
 {
-    Cell* newCell = new Cell();
     for (int i = 0; i < boardSize + 1; i++) {
+        Cell* newCell = new Cell();
+        newCell = 0;
         for (int j = 0; j < boardSize + 1; j++) {
-            board[i][j] = 0;
+            Cell* newCell = new Cell();
+            board[i][j] = newCell;
         }
     }
-    delete newCell;
 }
 
 /*
@@ -36,13 +37,11 @@ Structure of file should consist of 10 lines of 0 or 1 to indicate cell state
 */
 void readBoard(Cell* board[][10], int boardSize) 
 {
+    string fileName;
+    cout << "Please enter a file name: ";
+    cin >> fileName;
     ifstream fin;
-    fin.open("board0.txt");
-
-    int* ptr1;
-    int tmpNum;
-    ptr1 = &tmpNum;
-
+    fin.open(fileName);
 }
 
 /*
