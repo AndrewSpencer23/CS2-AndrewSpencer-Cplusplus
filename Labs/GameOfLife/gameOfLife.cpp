@@ -59,6 +59,7 @@ void printCells(Cell* board[][10], int boardSize)
             cout << board[i][j];
         }
     }
+    // test edit
 }
 
 /*
