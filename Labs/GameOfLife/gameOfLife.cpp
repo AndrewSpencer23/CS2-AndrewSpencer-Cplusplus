@@ -42,17 +42,18 @@ void readBoard(Cell* board[][10], int boardSize)
     cin >> fileName;
     ifstream fin;
     fin.open(fileName);
-
-    for(int i = 0; i < boardSize + 1; i++) {
-        for(int j = 0; j < boardSize + 1; j++) {
-            
+    string tmpLine;
+    while (getline(fin, tmpLine)) {
+        int currentCell;
+        for(int i = 0; i < boardSize + 1; i++) {
+            currentCell = tmpLine.at(i) - '0';
+            currentCell = board[i][0]->state;
+            for(int j = 0; j < boardSize + 1; j++) {
+                currentCell = tmpLine.at(j) - '0';
+                currentCell = board[i][j]->state;
+            }
         }
     }
-
-
-    // while (getline(fin, )) {
-
-    // }
 }
 
 /*
