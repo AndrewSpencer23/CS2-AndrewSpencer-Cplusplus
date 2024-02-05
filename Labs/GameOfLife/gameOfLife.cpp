@@ -44,7 +44,7 @@ void readBoard(Cell* board[][10], int boardSize)
     fin.open(fileName);
     string tmpLine;
     while (getline(fin, tmpLine)) {
-        int currentCell;
+        char currentCell;
         for(int i = 0; i < boardSize + 1; i++) {
             currentCell = tmpLine.at(i) - '0';
             currentCell = board[i][0]->state;
@@ -66,7 +66,6 @@ void printCells(Cell* board[][10], int boardSize)
             cout << board[i][j];
         }
     }
-    // test edit
 }
 
 /*
