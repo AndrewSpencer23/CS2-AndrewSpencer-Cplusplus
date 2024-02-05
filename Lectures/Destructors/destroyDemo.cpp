@@ -4,10 +4,10 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
-    BClass bClassInstance;
+    bclass::BClass bClassInstance;
 
     for(int i = 0; i < 10; i++) {
-        AClass* newAClass = new AClass();
+        aclass::AClass* newAClass = new aclass::AClass();
         bClassInstance.setThings(newAClass, i);
     }
     return 0;

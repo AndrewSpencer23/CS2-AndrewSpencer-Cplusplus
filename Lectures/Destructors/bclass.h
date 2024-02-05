@@ -2,13 +2,15 @@
 #include "aclass.h"
 #include <iostream>
 
-class BClass {
-    private:
-    int someNumber;
-    AClass* things[];
+namespace bclass {
+    class BClass {
+        private:
+        int someNumber;
+        aclass::AClass* things[];
 
-    public:
-    BClass();
-    ~BClass();
-    void setThings(AClass*, int);
-};
+        public:
+        BClass();
+        ~BClass();
+        void setThings(aclass::AClass*, int);
+    };
+}
