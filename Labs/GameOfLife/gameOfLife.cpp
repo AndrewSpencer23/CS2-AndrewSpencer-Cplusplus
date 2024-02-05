@@ -45,7 +45,7 @@ void readBoard(Cell* board[][10], int boardSize)
 
     for(int i = 0; i < boardSize + 1; i++) {
         for(int j = 0; j < boardSize + 1; j++) {
-
+            
         }
     }
 
