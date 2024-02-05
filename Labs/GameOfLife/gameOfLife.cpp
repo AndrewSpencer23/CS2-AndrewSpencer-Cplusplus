@@ -43,6 +43,12 @@ void readBoard(Cell* board[][10], int boardSize)
     ifstream fin;
     fin.open(fileName);
 
+    for(int i = 0; i < boardSize + 1; i++) {
+        for(int j = 0; j < boardSize + 1; j++) {
+
+        }
+    }
+
 
     // while (getline(fin, )) {
 
