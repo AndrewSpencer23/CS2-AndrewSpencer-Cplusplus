@@ -21,8 +21,6 @@ Should create structs and populate the array
 void initCells(Cell* board[][10], int boardSize)
 {
     for (int i = 0; i < boardSize + 1; i++) {
-        Cell* newCell = new Cell();
-        newCell = 0;
         for (int j = 0; j < boardSize + 1; j++) {
             Cell* newCell = new Cell();
             board[i][j] = newCell;
@@ -43,16 +41,14 @@ void readBoard(Cell* board[][10], int boardSize)
     ifstream fin;
     fin.open(fileName);
     string tmpLine;
+    int rowCounter;
     while (getline(fin, tmpLine)) {
         char currentCell;
         for(int i = 0; i < boardSize + 1; i++) {
             currentCell = tmpLine.at(i) - '0';
             currentCell = board[i][0]->state;
-            for(int j = 0; j < boardSize + 1; j++) {
-                currentCell = tmpLine.at(j) - '0';
-                currentCell = board[i][j]->state;
-            }
         }
+    rowCounter++;
     }
 }
 
