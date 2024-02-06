@@ -40,15 +40,15 @@ void readBoard(Cell* board[][10], int boardSize)
     cin >> fileName;
     ifstream fin;
     fin.open(fileName);
-    string tmpLine;
-    int rowCounter;
-    while (getline(fin, tmpLine)) {
+    string row;
+    int rowCounter = 0;
+    while (getline(fin, row)) {
         char currentCell;
         for(int i = 0; i < boardSize + 1; i++) {
-            currentCell = tmpLine.at(i) - '0';
-            currentCell = board[i][0]->state;
+            currentCell = row.at(i) - '0';
+            board[i][rowCounter]->state = currentCell;
         }
-    rowCounter++;
+        rowCounter++;
     }
 }
 
@@ -57,10 +57,12 @@ Function to print out all cells to cout
 */
 void printCells(Cell* board[][10], int boardSize)
 {
-    for (int i = 0; i < boardSize; i++) {
-        for (int j = 0; j < boardSize; j++) {
-            cout << board[i][j];
+    int rowCounter = 0;
+    while(rowCounter < boardSize + 1) {
+        for (int i = 0; i < boardSize + 1; i++) {
+            cout << board[i][rowCounter];
         }
+        rowCounter++;
     }
 }
 
