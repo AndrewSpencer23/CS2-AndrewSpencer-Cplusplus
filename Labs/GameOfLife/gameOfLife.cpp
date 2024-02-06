@@ -79,6 +79,21 @@ void findNumNeighbors(Cell* board[][10], int boardSize, Cell* curCell)
         for(int i = 0; i < boardSize; i++) {
             for(int j = 0; j < boardSize; j++) {
                 board[i][j] = curCell;
+                if(board[i+1][j] == curCell){
+                    board[i][j]->numLiveNeighbors++;
+                }
+                if(board[i+1][j+1] == curCell) {
+                    board[i][j]->numLiveNeighbors++;
+                }
+                if(board[i][j+1] == curCell) {
+                    board[i][j]->numLiveNeighbors++;
+                }
+                if(board[i-1][j] == curCell) {
+                    board[i][j]->numLiveNeighbors++;
+                }
+                if(board[i-1][j-1] == curCell) {
+                    board[i][j]->numLiveNeighbors++;
+                }
             }
             curCell->x++;
             curCell->y++;
