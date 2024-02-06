@@ -45,7 +45,6 @@ void readBoard(Cell* board[][10], int boardSize)
     while (getline(fin, row)) {
         char currentCell;
         for(int i = 0; i < boardSize; i++) {
-            
             currentCell = row.at(i) - '0';
             board[i][rowCounter]->state = currentCell;
         }
