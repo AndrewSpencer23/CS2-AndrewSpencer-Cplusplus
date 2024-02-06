@@ -60,8 +60,9 @@ void printCells(Cell* board[][10], int boardSize)
     int rowCounter = 0;
     while(rowCounter < boardSize) {
         for (int i = 0; i < boardSize; i++) {
-            cout << &board[i][rowCounter];
+            cout << board[i][rowCounter]->state;
         }
+        cout << endl;
         rowCounter++;
     }
 }
@@ -72,7 +73,17 @@ Must use the x, y position stored with each cell to determine which neighbors th
 */
 void findNumNeighbors(Cell* board[][10], int boardSize, Cell* curCell) 
 {
-
+    curCell->x = 0;
+    curCell->y = 0;
+    while(curCell->x < 10 && curCell->y < 10) {
+        for(int i = 0; i < boardSize; i++) {
+            for(int j = 0; j < boardSize; j++) {
+                board[i][j] = curCell;
+            }
+            curCell->x++;
+            curCell->y++;
+        }
+    }
 }
 
 /*
