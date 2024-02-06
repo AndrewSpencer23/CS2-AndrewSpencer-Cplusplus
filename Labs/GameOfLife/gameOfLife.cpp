@@ -94,6 +94,9 @@ void findNumNeighbors(Cell* board[][10], int boardSize, Cell* curCell)
                 if(board[i-1][j-1] == curCell) {
                     board[i][j]->numLiveNeighbors++;
                 }
+                if(board[i][j-1] == curCell) {
+                    board[i][j]->numLiveNeighbors++;
+                }
             }
             curCell->x++;
             curCell->y++;
@@ -114,5 +117,28 @@ Return if you updated cells or not to break out of while loop from main.
 */
 bool updateCellState(Cell* board[][10], int boardSize) 
 {
-    return false;
+    for(int i = 0; i < boardSize; i++) {
+        for(int j = 0; j < boardSize; j++) {
+            if(board[i][j]->numLiveNeighbors < 2 && board[i][j]->numLiveNeighbors > 0) {
+
+                return true;
+            }
+            if(board[i][j]->numLiveNeighbors >= 2 && board[i][j]->numLiveNeighbors <= 3) {
+
+                return true;
+            }
+            if(board[i][j]->numLiveNeighbors > 3) {
+
+                return true;
+            }
+            if(board[i][j]->numLiveNeighbors == 3) {
+
+                return true;
+            }
+            if(board[i][j]->numLiveNeighbors == 0) {
+
+                return false;
+            }
+        }
+    }
 }
