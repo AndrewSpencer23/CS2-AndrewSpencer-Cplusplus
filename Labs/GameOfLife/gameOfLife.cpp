@@ -20,8 +20,8 @@ Should create structs and populate the array
 */
 void initCells(Cell* board[][10], int boardSize)
 {
-    for (int i = 0; i < boardSize + 1; i++) {
-        for (int j = 0; j < boardSize + 1; j++) {
+    for (int i = 0; i < boardSize; i++) {
+        for (int j = 0; j < boardSize; j++) {
             Cell* newCell = new Cell();
             board[i][j] = newCell;
         }
@@ -44,7 +44,8 @@ void readBoard(Cell* board[][10], int boardSize)
     int rowCounter = 0;
     while (getline(fin, row)) {
         char currentCell;
-        for(int i = 0; i < boardSize + 1; i++) {
+        for(int i = 0; i < boardSize; i++) {
+            
             currentCell = row.at(i) - '0';
             board[i][rowCounter]->state = currentCell;
         }
@@ -58,9 +59,9 @@ Function to print out all cells to cout
 void printCells(Cell* board[][10], int boardSize)
 {
     int rowCounter = 0;
-    while(rowCounter < boardSize + 1) {
-        for (int i = 0; i < boardSize + 1; i++) {
-            cout << board[i][rowCounter];
+    while(rowCounter < boardSize) {
+        for (int i = 0; i < boardSize; i++) {
+            cout << &board[i][rowCounter];
         }
         rowCounter++;
     }
