@@ -76,22 +76,22 @@ void findNumNeighbors(Cell* board[][10], int boardSize, Cell* curCell)
     for(int i = 0; i < boardSize; i++) {
         for(int j = 0; j < boardSize; j++) {
             board[i][j] = curCell;
-            if(curCell->x == board[i+1][j]->x){
+            if(curCell->x == board[i+1][j]->x && curCell->y == board[i+1][j]->y){
                 curCell->numLiveNeighbors++;
             }
             if(curCell->x == board[i+1][j+1]->x && curCell->y == board[i+1][j+1]->y) {
                 curCell->numLiveNeighbors++;
             }
-            if(curCell->y == board[i][j+1]->y) {
+            if(curCell->x == board[i][j+1]->x && curCell->y == board[i][j+1]->y) {
                 curCell->numLiveNeighbors++;
             }
-            if(curCell->x == board[i-1][j]->x) {
+            if(curCell->x == board[i-1][j]->x && curCell->y == board[i-1][j]->y) {
                 curCell->numLiveNeighbors++;
             }
             if(curCell->x == board[i-1][j-1]->x && curCell->y == board[i-1][j-1]->y) {
                 curCell->numLiveNeighbors++;
             }
-            if(curCell->y == board[i][j-1]->y) {
+            if(curCell->x == board[i][j-1]->x && curCell->y == board[i][j-1]->y) {
                 curCell->numLiveNeighbors++;
             }
             if(curCell->x == board[i+1][j-1]->x && curCell->y == board[i+1][j-1]->y) {
@@ -117,27 +117,28 @@ Return if you updated cells or not to break out of while loop from main.
 */
 bool updateCellState(Cell* board[][10], int boardSize) 
 {
-    bool updated = true;
+    bool updated = false;
     for(int i = 0; i < boardSize; i++) {
         for(int j = 0; j < boardSize; j++) {
             if(board[i][j]->numLiveNeighbors < 2 && board[i][j]->numLiveNeighbors > 0) {
                 board[i][j]->state = 0;
+                printCells(&(board)[10], boardSize);
                 updated = true;
             }
             if(board[i][j]->numLiveNeighbors >= 2 && board[i][j]->numLiveNeighbors <= 3) {
                 board[i+1][j+1]->state = 1;
+                printCells(&(board)[10], boardSize);
                 updated = true;
             }
             if(board[i][j]->numLiveNeighbors > 3) {
                 board[i][j]->state = 0;
+                printCells(&(board)[10], boardSize);
                 updated = true;
             }
             if(board[i][j]->state == 0 && board[i][j]->numLiveNeighbors == 3) {
                 board[i][j]->state = 1;
+                printCells(&(board)[10], boardSize);
                 updated = true;
-            }
-            if(board[i][j]->state == 0 && board[i][j]->numLiveNeighbors == 0) {
-                updated = false;
             }
         }
     }
