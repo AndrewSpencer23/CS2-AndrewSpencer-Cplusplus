@@ -73,33 +73,33 @@ Must use the x, y position stored with each cell to determine which neighbors th
 */
 void findNumNeighbors(Cell* board[][10], int boardSize, Cell* curCell) 
 {
-    curCell->x = 0;
-    curCell->y = 0;
-    while(curCell->x < 10 && curCell->y < 10) {
-        for(int i = 0; i < boardSize; i++) {
-            for(int j = 0; j < boardSize; j++) {
-                board[i][j] = curCell;
-                if(board[i+1][j] == curCell){
-                    board[i][j]->numLiveNeighbors++;
-                }
-                if(board[i+1][j+1] == curCell) {
-                    board[i][j]->numLiveNeighbors++;
-                }
-                if(board[i][j+1] == curCell) {
-                    board[i][j]->numLiveNeighbors++;
-                }
-                if(board[i-1][j] == curCell) {
-                    board[i][j]->numLiveNeighbors++;
-                }
-                if(board[i-1][j-1] == curCell) {
-                    board[i][j]->numLiveNeighbors++;
-                }
-                if(board[i][j-1] == curCell) {
-                    board[i][j]->numLiveNeighbors++;
-                }
+    for(int i = 0; i < boardSize; i++) {
+        for(int j = 0; j < boardSize; j++) {
+            board[i][j] = curCell;
+            if(curCell->x == board[i+1][j]->x && curCell->y == board[i+1][j]->y){
+                curCell->numLiveNeighbors++;
             }
-            curCell->x++;
-            curCell->y++;
+            if(curCell->x == board[i+1][j+1]->x && curCell->y == board[i+1][j+1]->y) {
+                curCell->numLiveNeighbors++;
+            }
+            if(curCell->x == board[i][j+1]->x && curCell->y == board[i][j+1]->y) {
+                curCell->numLiveNeighbors++;
+            }
+            if(curCell->x == board[i-1][j]->x && curCell->y == board[i-1][j]->y) {
+                curCell->numLiveNeighbors++;
+            }
+            if(curCell->x == board[i-1][j-1]->x && curCell->y == board[i-1][j-1]->y) {
+                curCell->numLiveNeighbors++;
+            }
+            if(curCell->x == board[i][j-1]->x && curCell->y == board[i][j-1]->y) {
+                curCell->numLiveNeighbors++;
+            }
+            if(curCell->x == board[i+1][j-1]->x && curCell->y == board[i+1][j-1]->y) {
+                curCell->numLiveNeighbors++;
+            }
+            if(curCell->x == board[i-1][j+1]->x && curCell->y == board[i-1][j+1]->y) {
+                curCell->numLiveNeighbors++;
+            }
         }
     }
 }
@@ -117,24 +117,30 @@ Return if you updated cells or not to break out of while loop from main.
 */
 bool updateCellState(Cell* board[][10], int boardSize) 
 {
+    bool updated = false;
     for(int i = 0; i < boardSize; i++) {
         for(int j = 0; j < boardSize; j++) {
             if(board[i][j]->numLiveNeighbors < 2 && board[i][j]->numLiveNeighbors > 0) {
                 board[i][j]->state = 0;
+                printCells(&(board)[10], boardSize);
+                updated = true;
             }
             if(board[i][j]->numLiveNeighbors >= 2 && board[i][j]->numLiveNeighbors <= 3) {
                 board[i+1][j+1]->state = 1;
+                printCells(&(board)[10], boardSize);
+                updated = true;
             }
             if(board[i][j]->numLiveNeighbors > 3) {
                 board[i][j]->state = 0;
+                printCells(&(board)[10], boardSize);
+                updated = true;
             }
             if(board[i][j]->state == 0 && board[i][j]->numLiveNeighbors == 3) {
                 board[i][j]->state = 1;
-            }
-            if(board[i][j]->state == 0 && board[i][j]->numLiveNeighbors == 0) {
-                return false;
+                printCells(&(board)[10], boardSize);
+                updated = true;
             }
         }
     }
-    return true;
+    return updated;
 }
