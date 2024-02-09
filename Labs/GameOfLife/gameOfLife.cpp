@@ -141,22 +141,22 @@ bool updateCellState(Cell* board[][10], int boardSize)
         for(int j = 0; j < boardSize; j++) {
             if(board[i][j]->numLiveNeighbors < 2 && board[i][j]->numLiveNeighbors > 0) {
                 board[i][j]->state = 0;
-                printCells(&(board)[10], boardSize);
+                printCells(board, boardSize);
                 updated = true;
             }
             if(board[i][j]->numLiveNeighbors >= 2 && board[i][j]->numLiveNeighbors <= 3) {
                 board[i+1][j+1]->state = 1;
-                printCells(&(board)[10], boardSize);
+                printCells(board, boardSize);
                 updated = true;
             }
             if(board[i][j]->numLiveNeighbors > 3) {
                 board[i][j]->state = 0;
-                printCells(&(board)[10], boardSize);
+                printCells(board, boardSize);
                 updated = true;
             }
             if(board[i][j]->state == 0 && board[i][j]->numLiveNeighbors == 3) {
                 board[i][j]->state = 1;
-                printCells(&(board)[10], boardSize);
+                printCells(board, boardSize);
                 updated = true;
             }
         }
