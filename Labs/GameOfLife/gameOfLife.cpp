@@ -77,55 +77,56 @@ void findNumNeighbors(Cell* board[][10], int boardSize, Cell* curCell)
 {
     // I talked to 
     curCell->numLiveNeighbors = 0;
-    for(int i = curCell->x-1; i < curCell->x + 2; i++) {
-        for(int j = curCell->y-1; j < curCell->y + 2; j++) {
+    for(int i = curCell->x - 1; i < curCell->x + 2; i++) {
+        for(int j = curCell->y - 1; j < curCell->y + 2; j++) {
             curCell->numLiveNeighbors = 0;
         }
     }
 
-    //         board[i][j] = curCell;
-            // if(i < 9) {
-    //             if(curCell->x == board[i+1][j]->x && curCell->y == board[i+1][j]->y){
-    //                 curCell->numLiveNeighbors++;
-    //             }
-    //         }
-    //         if(i < 10 && j < 10) {
-    //             if(curCell->x == board[i+1][j+1]->x && curCell->y == board[i+1][j+1]->y) {
-    //                 curCell->numLiveNeighbors++;
-    //             }
-    //         }
-    //         if(j < 10) {
-    //             if(curCell->x == board[i][j+1]->x && curCell->y == board[i][j+1]->y) {
-    //                 curCell->numLiveNeighbors++;
-    //             }
-    //         }
-    //         if(i > 0) {
-    //             if(curCell->x == board[i-1][j]->x && curCell->y == board[i-1][j]->y) {
-    //                 curCell->numLiveNeighbors++;
-    //             }
-    //         }
-    //         if(i > 0 && j > 0) {
-    //             if(curCell->x == board[i-1][j-1]->x && curCell->y == board[i-1][j-1]->y) {
-    //                 curCell->numLiveNeighbors++;
-    //             }
-    //         }
-    //         if(j > 0) {
-    //             if(curCell->x == board[i][j-1]->x && curCell->y == board[i][j-1]->y) {
-    //                 curCell->numLiveNeighbors++;
-    //             }
-    //         }
-    //         if(i < 10 && j > 0) {
-    //             if(curCell->x == board[i+1][j-1]->x && curCell->y == board[i+1][j-1]->y) {
-    //                 curCell->numLiveNeighbors++;
-    //             }
-    //         }
-    //         if(i > 0 && j < 10) {
-    //             if(curCell->x == board[i-1][j+1]->x && curCell->y == board[i-1][j+1]->y) {
-    //                 curCell->numLiveNeighbors++;
-    //             }
-    //         }
-    //     }
-    // }
+    for(int i = curCell->x - 1; i < curCell->x + 2; i++) {
+        for(int j = curCell->y - 1; j < curCell->y + 2; j++) {
+            if(i < 9) {
+                if(curCell->x == board[i+1][j]->x && curCell->y == board[i+1][j]->y){
+                    curCell->numLiveNeighbors++;
+                }
+            }
+            if(i < 9 && j < 9) {
+                if(curCell->x == board[i+1][j+1]->x && curCell->y == board[i+1][j+1]->y) {
+                    curCell->numLiveNeighbors++;
+                }
+            }
+            if(j < 9) {
+                if(curCell->x == board[i][j+1]->x && curCell->y == board[i][j+1]->y) {
+                    curCell->numLiveNeighbors++;
+                }
+            }
+            if(i > 0) {
+                if(curCell->x == board[i-1][j]->x && curCell->y == board[i-1][j]->y) {
+                    curCell->numLiveNeighbors++;
+                }
+            }
+            if(i > 0 && j > 0) {
+                if(curCell->x == board[i-1][j-1]->x && curCell->y == board[i-1][j-1]->y) {
+                    curCell->numLiveNeighbors++;
+                }
+            }
+            if(j > 0) {
+                if(curCell->x == board[i][j-1]->x && curCell->y == board[i][j-1]->y) {
+                    curCell->numLiveNeighbors++;
+                }
+            }
+            if(i < 9 && j > 0) {
+                if(curCell->x == board[i+1][j-1]->x && curCell->y == board[i+1][j-1]->y) {
+                    curCell->numLiveNeighbors++;
+                }
+            }
+            if(i > 0 && j < 9) {
+                if(curCell->x == board[i-1][j+1]->x && curCell->y == board[i-1][j+1]->y) {
+                    curCell->numLiveNeighbors++;
+                }
+            }
+        }
+    }
 }
 
 /*
@@ -150,23 +151,30 @@ bool updateCellState(Cell* board[][10], int boardSize)
 
     for(int i = 0; i < boardSize; i++) {
         for(int j = 0; j < boardSize; j++) {
-            if(board[i][j]->numLiveNeighbors < 2 && board[i][j]->numLiveNeighbors >= 0 && board[i][j]->state == 1) {
+            if(board[i][j]->numLiveNeighbors < 2 && board[i][j]->state == 1) {
                 board[i][j]->state = 0;
                 updated = true;
+                continue;
             }
             if(board[i][j]->numLiveNeighbors >= 2 && board[i][j]->numLiveNeighbors <= 3) {
                 board[i+1][j+1]->state = 1;
-
                 updated = true;
+                continue;
             }
             if(board[i][j]->numLiveNeighbors > 3) {
                 board[i][j]->state = 0;
                 updated = true;
+                continue;
             }
             if(board[i][j]->state == 0 && board[i][j]->numLiveNeighbors == 3) {
                 board[i][j]->state = 1;
                 printCells(board, boardSize);
                 updated = true;
+                continue;
+            }
+            else{
+                updated = false;
+                continue;
             }
         }
     }
