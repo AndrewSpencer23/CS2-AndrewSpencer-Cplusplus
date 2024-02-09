@@ -157,7 +157,7 @@ bool updateCellState(Cell* board[][10], int boardSize)
                 continue;
             }
             if(board[i][j]->numLiveNeighbors >= 2 && board[i][j]->numLiveNeighbors <= 3) {
-                board[i+1][j+1]->state = 1;
+                board[i][j]->state = 1;
                 updated = true;
                 continue;
             }
