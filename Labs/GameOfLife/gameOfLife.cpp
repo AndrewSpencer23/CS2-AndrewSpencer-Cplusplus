@@ -168,7 +168,6 @@ bool updateCellState(Cell* board[][10], int boardSize)
             }
             if(board[i][j]->state == 0 && board[i][j]->numLiveNeighbors == 3) {
                 board[i][j]->state = 1;
-                printCells(board, boardSize);
                 updated = true;
                 continue;
             }
