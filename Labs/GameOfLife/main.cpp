@@ -27,5 +27,11 @@ int main(int argc, char* argv[])
 
     // Clean up board if cells were allocated on the heap
 
+    // for(size_t i = 0; i < boardSize; i++) {  // Deleting board that was allocated on the heap using nested for loop.
+    //     for(size_t j = 0; j < boardSize; j++) {
+    //         delete board[i][j];
+    //     }
+    // }
+
     return 0;
 }
