@@ -91,13 +91,36 @@ void findNumNeighbors(Cell* board[][10], int boardSize, Cell* curCell)
             if(j < 0) {
                 continue;
             }
-            else {
-                curCell->numLiveNeighbors += board[i][j]->state;
+            if(board[i][j]->state == curCell->state) {
+                curCell->numLiveNeighbors++;
             }
         }
     }
 }
 
+//     for(int j = 0; j < boardSize; j++) {
+//         for(int i = 0; i < boardSize; i++) {
+//             if(i > 9) {
+//                continue;
+//             }
+//             if (j > 9) {
+//                 continue;
+//             }
+//             if(i < 0) {
+//                 continue;
+//             }
+//             if(j < 0) {
+//                 continue;
+//             }
+//             if(curCell->x == curCell->x + 1) {
+//                 curCell->numLiveNeighbors++;
+//             }
+//             if(curCell->y == curCell->y + 1) {
+//                 curCell->numLiveNeighbors++;
+//             }
+//         }
+//     }
+// }
 
 /*
 Function to update each cell's state based on number of neighbors
@@ -112,51 +135,45 @@ Return if you updated cells or not to break out of while loop from main.
 */
 bool updateCellState(Cell* board[][10], int boardSize) 
 {
-    bool updated = false; // Initialize this to false
-
-    // Calculate the neighbors using findNumNeighbors();
+    bool updated = true;
     for(int i = 0; i < boardSize; i++) {
         for(int j = 0; j < boardSize; j++) {
             findNumNeighbors(board, boardSize, board[i][j]);
         }
     }
 
-    // Update cell states
-        for(int i = 0; i < boardSize; i++) {
-            for(int j = 0; j < boardSize; j++) {
-                // Apply rules
-                if(board[i][j]->state == 1) {
-                    if(board[i][j]->numLiveNeighbors < 2) {
-                        board[i][j]->state = 0;
-                        updated = true;
-                    }
-                }
-                if(board[i][j]->state == 1) {
-                    if(board[i][j]->numLiveNeighbors > 3) {
-                        board[i][j]->state = 0;
-                        updated = true;
-                    }
-                }
-                
-                if(board[i][j]->state == 0) {
-                    if(board[i][j]->numLiveNeighbors == 3) {
-                        board[i][j]->state = 1;
-                        updated = true;
-                    }
-                }
-                if(board[i][j]->state == 1) {
-                    if(board[i][j]->numLiveNeighbors == 3) {
-                        board[i][j]->state = 1;
-                        updated = true;
-                    }
-                }
-                if(board[i][j]->state == 1) {
-                    if(board[i][j]->numLiveNeighbors == 2) {
-                        board[i][j]->state = 1;
-                        updated = true;
-                    }
-                }
+    for(int i = 0; i < boardSize; i++) {
+        for(int j = 0; j < boardSize; j++) {
+            if(board[i][j]->state == 1 && board[i][j]->numLiveNeighbors < 2) {
+                board[i][j]->state = 0;
+                updated = true;
+                continue;
+            }
+            if(board[i][j]->state == 1 && board[i][j]->numLiveNeighbors == 2) {
+                board[i][j]->state = 1;
+                updated = true;
+                continue;
+            }
+            if(board[i][j]->state == 1 && board[i][j]->numLiveNeighbors == 3) {
+                board[i][j]->state = 1;
+                updated = true;
+                continue;
+            }
+            if(board[i][j]->state == 1 && board[i][j]->numLiveNeighbors > 3) {
+                board[i][j]->state = 0;
+                updated = true;
+                continue;
+            }
+            if(board[i][j]->state == 0 && board[i][j]->numLiveNeighbors == 3) {
+                board[i][j]->state = 1;
+                updated = true;
+                continue;
+            }
+            else{
+                updated = false;
+                continue;
             }
         }
+    }
     return updated;
 }
