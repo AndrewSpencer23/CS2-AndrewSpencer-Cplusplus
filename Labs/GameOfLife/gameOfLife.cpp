@@ -79,16 +79,19 @@ void findNumNeighbors(Cell* board[][10], int boardSize, Cell* curCell)
     for(int i = curCell->x - 1; i < curCell->x + 2; i++) {
         for(int j = curCell->y - 1; j < curCell->y + 2; j++) {
             curCell->numLiveNeighbors = 0;
-            if(i > 9) {
+            if(i == curCell->x && j == curCell->y) {
+                continue;
+            }
+            else if(i > 9) {
                continue;
             }
-            if (j > 9) {
+            else if (j > 9) {
                 continue;
             }
-            if(i < 0) {
+            else if(i < 0) {
                 continue;
             }
-            if(j < 0) {
+            else if(j < 0) {
                 continue;
             }
             if(board[i][j]->state == 0) {
@@ -100,30 +103,6 @@ void findNumNeighbors(Cell* board[][10], int boardSize, Cell* curCell)
         }
     }
 }
-
-//     for(int j = 0; j < boardSize; j++) {
-//         for(int i = 0; i < boardSize; i++) {
-//             if(i > 9) {
-//                continue;
-//             }
-//             if (j > 9) {
-//                 continue;
-//             }
-//             if(i < 0) {
-//                 continue;
-//             }
-//             if(j < 0) {
-//                 continue;
-//             }
-//             if(curCell->x == curCell->x + 1) {
-//                 curCell->numLiveNeighbors++;
-//             }
-//             if(curCell->y == curCell->y + 1) {
-//                 curCell->numLiveNeighbors++;
-//             }
-//         }
-//     }
-// }
 
 /*
 Function to update each cell's state based on number of neighbors
@@ -151,29 +130,24 @@ bool updateCellState(Cell* board[][10], int boardSize)
                 if(board[i][j]->numLiveNeighbors < 2) {
                     board[i][j]->state = 0;
                     updated = true;
-                    continue;
                 }
-                else if(board[i][j]->numLiveNeighbors == 2) {
+                if(board[i][j]->numLiveNeighbors == 2) {
                     board[i][j]->state = 1;
-                    updated = true;
                     continue;
                 }
-                else if(board[i][j]->numLiveNeighbors == 3) {
-                    board[i][j]->state = 1;
-                    updated = true;
-                    continue;
-                }
-                else if(board[i][j]->numLiveNeighbors > 3) {
+                if(board[i][j]->numLiveNeighbors > 3) {
                     board[i][j]->state = 0;
                     updated = true;
+                }
+                if(board[i][j]->numLiveNeighbors == 3) {
+                    board[i][j]->state = 1;
                     continue;
                 }
             }
             if(board[i][j] == 0) {
-                if(board[i][j]->state == 0 && board[i][j]->numLiveNeighbors == 3) {
+                if(board[i][j]->numLiveNeighbors == 3) {
                     board[i][j]->state = 1;
                     updated = true;
-                    continue;
                 }
             }
             else{
