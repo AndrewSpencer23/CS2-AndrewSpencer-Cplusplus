@@ -52,6 +52,7 @@ void readBoard(Cell* board[][10], int boardSize)
         }
         rowCounter++;
     }
+    fin.close();
 }
 
 /*
@@ -74,7 +75,7 @@ Function to count the number of live neighbors for each cell.
 Must use the x, y position stored with each cell to determine which neighbors they have
 */
 void findNumNeighbors(Cell* board[][10], int boardSize, Cell* curCell) 
-{ 
+{
     curCell->numLiveNeighbors = 0;
     for(int i = curCell->x - 1; i < curCell->x + 2; i++) {
         for(int j = curCell->y - 1; j < curCell->y + 2; j++) {
