@@ -49,6 +49,8 @@ void readBoard(Cell* board[][10], int boardSize)
         for(int i = 0; i < boardSize; i++) {
             currentCell = row.at(i) - '0';
             board[i][rowCounter]->state = currentCell;
+            board[i][rowCounter]->x = i;
+            board[i][rowCounter]->y = rowCounter;
         }
         rowCounter++;
     }
@@ -79,7 +81,6 @@ void findNumNeighbors(Cell* board[][10], int boardSize, Cell* curCell)
     curCell->numLiveNeighbors = 0;
     for(int i = curCell->x - 1; i < curCell->x + 2; i++) {
         for(int j = curCell->y - 1; j < curCell->y + 2; j++) {
-            curCell->numLiveNeighbors = 0;
             if(i == curCell->x && j == curCell->y) {
                 continue;
             }
@@ -118,7 +119,7 @@ Return if you updated cells or not to break out of while loop from main.
 */
 bool updateCellState(Cell* board[][10], int boardSize) 
 {
-    bool updated = true;
+    bool updated = false;
     for(int i = 0; i < boardSize; i++) {
         for(int j = 0; j < boardSize; j++) {
             findNumNeighbors(board, boardSize, board[i][j]);
@@ -127,10 +128,12 @@ bool updateCellState(Cell* board[][10], int boardSize)
 
     for(int i = 0; i < boardSize; i++) {
         for(int j = 0; j < boardSize; j++) {
+            // cout << "DEBUG: NumLiveNeighbors" << board[i][j]->numLiveNeighbors << endl;
             if(board[i][j]->state == 1) {
                 if(board[i][j]->numLiveNeighbors < 2) {
                     board[i][j]->state = 0;
                     updated = true;
+
                 }
                 if(board[i][j]->numLiveNeighbors == 2) {
                     board[i][j]->state = 1;
