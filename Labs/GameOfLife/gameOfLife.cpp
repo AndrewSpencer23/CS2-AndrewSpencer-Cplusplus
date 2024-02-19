@@ -54,6 +54,7 @@ void readBoard(Cell* board[][10], int boardSize)
         }
         rowCounter++;
     }
+    cin.get();
     fin.close();
 }
 
