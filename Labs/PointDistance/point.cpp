@@ -48,7 +48,7 @@ void points::Point::setY(int newVal)
 
 void points::Point::setNearestPoint(Point* newNearestPoint)
 {
-
+    newNearestPoint = nullptr;
 }
 
 double points::Point::distPoints(Point& point)
