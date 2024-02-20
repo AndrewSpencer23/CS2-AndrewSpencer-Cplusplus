@@ -3,6 +3,8 @@
 //Constructor
 points::Point::Point(int X, int Y, points::Point* closestPoint)
 {
+    X = closestPoint->x;
+    Y = closestPoint->y;
     closestPoint = this;
 }
 //Destructor
