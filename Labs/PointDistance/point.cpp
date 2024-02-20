@@ -26,6 +26,7 @@ int points::Point::getY()
 
 points::Point* points::Point::getNearestPoint()
 {
+    nearestPoint = nullptr;
     return nullptr;
 }
 
