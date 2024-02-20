@@ -2,6 +2,16 @@
 
 using namespace std;
 
+template <class T1>
+class MyClass {
+    private:
+    T1 _id;
+
+    public:
+    void setId(T1);
+    void getId(T1);
+};
+
 template <class T1, class T2, class T3>
 T1 addNums(T2, T3);
 
@@ -18,6 +28,16 @@ int main(int argc, char* argv[]) {
     cout << num1 << " + " << num2 << " = " << result << endl;
     cout << "3000 + 68.3 = " << addNums<float,int,float>(3000, 68.3);
     return 0;
+}
+
+template <class T1>
+void MyClass<T1>::setId(T1 id) {
+    _id = id;
+}
+
+template <class T1>
+void MyClass<T1>::getId(T1 id) {
+    return _id;
 }
 
 template <class T1, class T2, class T3>
