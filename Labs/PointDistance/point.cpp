@@ -38,7 +38,7 @@ points::Point* points::Point::calcNearestPoint(Point* pointList[], unsigned long
             continue;
         }
     }
-    return nullptr;
+    return nearestPoint;
 }
 
 //Setters
