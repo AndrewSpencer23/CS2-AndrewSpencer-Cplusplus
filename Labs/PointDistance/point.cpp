@@ -36,7 +36,7 @@ points::Point* points::Point::calcNearestPoint(Point* pointList[], unsigned long
             this->nearestPoint = pointList[i];
         }
     }
-    return this->nearestPoint;
+    return nullptr;
 }
 
 //Setters
@@ -56,8 +56,9 @@ void points::Point::setNearestPoint(Point* newNearestPoint)
 }
 
 double points::Point::distPoints(Point& point)
-{
+{   
+    *this = point;
     double distance;
-    distance = sqrt((pow((nearestPoint->x - point.x), 2)) + (pow((nearestPoint->y - point.y), 2)));
+    distance = sqrt((pow((nearestPoint->getX() - point.getX()), 2)) + (pow((nearestPoint->getY() - point.getY()), 2)));
     return distance;
 }

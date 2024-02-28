@@ -32,7 +32,6 @@ int main(int argc, char* argv[])
     generatePoints(pointList, arrSize);
     printPoints(pointList, arrSize);
 
-
     points::Point* testPoint = promptTestPoint();
 
     testPoint->setNearestPoint(testPoint->calcNearestPoint(pointList, arrSize));
