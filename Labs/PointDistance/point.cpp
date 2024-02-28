@@ -34,6 +34,8 @@ points::Point* points::Point::calcNearestPoint(Point* pointList[], unsigned long
     for(unsigned long i = 0; i < arrSize; i++) {
         if(this->nearestPoint->distPoints(*nearestPoint) >= pointList[i]->distPoints(*pointList[i])) {
             this->nearestPoint = pointList[i];
+            return pointList[i];
+            continue;
         }
     }
     return this->nearestPoint;
