@@ -3,14 +3,14 @@
 //Constructor
 points::Point::Point(int X, int Y, points::Point* closestPoint)
 {
-    this->nearestPoint = closestPoint;
-    this->x = X;
-    this->y = Y;
+    nearestPoint = closestPoint;
+    x = X;
+    x = Y;
 }
 //Destructor
 points::Point::~Point()
 {
-    delete[] this;
+    delete[] nearestPoint;
 }
 
 //Getters
@@ -26,19 +26,18 @@ int points::Point::getY()
 
 points::Point* points::Point::getNearestPoint()
 {
-    return this->nearestPoint;
+    return nearestPoint;
 }
 
 points::Point* points::Point::calcNearestPoint(Point* pointList[], unsigned long arrSize)
 {
     for(unsigned long i = 0; i < arrSize; i++) {
         if(this->nearestPoint->distPoints(*nearestPoint) >= pointList[i]->distPoints(*pointList[i])) {
-            this->nearestPoint = pointList[i];
+            pointList[i] = getNearestPoint();
             return pointList[i];
-            continue;
         }
     }
-    return this->nearestPoint;
+    return getNearestPoint();
 }
 
 //Setters
@@ -59,8 +58,10 @@ void points::Point::setNearestPoint(Point* newNearestPoint)
 
 double points::Point::distPoints(Point& point)
 {   
-    *this = point;
+    point = *getNearestPoint();
+    point.x = getX();
+    point.y = getY();
     double distance;
-    distance = sqrt((pow((nearestPoint->getX() - point.getX()), 2)) + (pow((nearestPoint->getY() - point.getY()), 2)));
+    distance = sqrt((pow((this->nearestPoint->x - point.x), 2)) + (pow((this->nearestPoint->y - point.y), 2)));
     return distance;
 }
