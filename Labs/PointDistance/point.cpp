@@ -32,9 +32,9 @@ points::Point* points::Point::getNearestPoint()
 points::Point* points::Point::calcNearestPoint(Point* pointList[], unsigned long arrSize)
 {
     for(unsigned long i = 0; i < arrSize; i++) {
-        if(this->nearestPoint->distPoints(*nearestPoint) >= pointList[i]->distPoints(*pointList[i])) {
+        if(this->getNearestPoint()->getX() >= pointList[i]->getNearestPoint()->getX()) {
+            cout << "DEBUG" << pointList[i];
             pointList[i] = getNearestPoint();
-            return pointList[i];
         }
     }
     return getNearestPoint();
@@ -58,7 +58,6 @@ void points::Point::setNearestPoint(Point* newNearestPoint)
 
 double points::Point::distPoints(Point& point)
 {   
-    point = *getNearestPoint();
     point.x = getX();
     point.y = getY();
     double distance;
