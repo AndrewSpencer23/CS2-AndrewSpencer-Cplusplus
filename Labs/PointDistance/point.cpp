@@ -16,12 +16,12 @@ points::Point::~Point()
 //Getters
 int points::Point::getX()
 {
-    return this->x;
+    return x;
 }
 
 int points::Point::getY()
 {
-    return this->y;
+    return y;
 }
 
 points::Point* points::Point::getNearestPoint()
