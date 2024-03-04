@@ -14,10 +14,10 @@ void deleteNode(Node*, int);
 
 int main(int argc, char* argv[]) {
     Node* head = new Node();
-    Node* node1= new Node();
-    Node* node2= new Node();
-    Node* node3= new Node();
-    Node* tail= new Node();
+    Node* node1 = new Node();
+    Node* node2 = new Node();
+    Node* node3 = new Node();
+    Node* tail = new Node();
 
     head->data = 42;
     node1->data = 15;
@@ -38,13 +38,13 @@ int main(int argc, char* argv[]) {
 
     tail->prev = node3;
 
-    deleteNode(head);
+    deleteNode(head, 64);
     printList(head);
     printRevList(tail);
 
     delete head;
     delete node1;
-    delete node2;
+    // delete node2;
     delete node3;
     delete tail;
 
