@@ -3,7 +3,6 @@
 using namespace std;
 
 namespace movies {
-
     class Movie { 
         private: // declaring variables in class string _id;
             string _title; 
@@ -13,13 +12,8 @@ namespace movies {
             string _director;
 
             public:
-
-        }; 
-
-    class Database {
-        private:
-
-        public:
-
-    };
+            Movie();
+            ~Movie();
+            
+        };
 }

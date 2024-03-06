@@ -1,5 +1,6 @@
 #include <iostream>
-#include "HW1.h"
+#include "database.h"
+#include "movie.h"
 
 using namespace std;
 
