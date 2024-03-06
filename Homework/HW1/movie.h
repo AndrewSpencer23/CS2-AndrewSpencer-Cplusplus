@@ -12,9 +12,22 @@ namespace movies {
             float _rating; 
             string _director;
 
-            public:
+        public:
             Movie();
             ~Movie();
-            
-        };
+
+            string getId();
+            string getTitle();
+            int getYear();
+            string getGenre();
+            float getRating();
+            string getDirector();
+
+            string setId(string);
+            string setTitle(string);
+            int setYear(int);
+            string setGenre(string);
+            float setRating(float);
+            string setDirector(string);
+    };
 }
