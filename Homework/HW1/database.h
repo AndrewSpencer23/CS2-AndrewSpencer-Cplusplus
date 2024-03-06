@@ -2,10 +2,10 @@
 
 namespace movies {
     class Database { 
-        private: // declaring variables in class string _id;
+        private: // Declaring variables in class
 
         public:
-        Database();
-        ~Database();     
+        Database(); // Constructor
+        ~Database(); // Destructor
     };
 }
