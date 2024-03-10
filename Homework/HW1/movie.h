@@ -4,8 +4,8 @@ using namespace std;
 
 namespace movies {
     class Movie { 
-        private: // declaring variables in class
-            string _id;
+        private:
+            string _id; // declaring variables in class
             string _title;
             int _year; 
             string _genre; 
@@ -13,21 +13,21 @@ namespace movies {
             string _director;
 
         public:
-            Movie();
-            ~Movie();
+            Movie(); // Constructor
+            ~Movie(); // Destructor
 
-            string getId();
+            string getId(); // Getters
             string getTitle();
             int getYear();
             string getGenre();
             float getRating();
             string getDirector();
 
-            string setId(string);
-            string setTitle(string);
-            int setYear(int);
-            string setGenre(string);
-            float setRating(float);
-            string setDirector(string);
+            void setId(string); // Setters
+            void setTitle(string);
+            void setYear(int);
+            void setGenre(string);
+            void setRating(float);
+            void setDirector(string);
     };
 }
