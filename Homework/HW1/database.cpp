@@ -5,3 +5,41 @@ void databases::Database::initMovies() {
         _movieList[i] = nullptr;
     }
 }
+
+databases::Database::Database() {
+
+} // Constructor
+
+
+databases::Database::~Database() {
+
+} // Destructor
+
+     
+int getDbId() {
+
+} // Getters
+
+
+string getDbName() {
+
+}
+
+
+movies::Movie* getMovieList() {
+
+}
+
+void setDbId(int) {
+
+} // Setters
+
+
+void setDbName(string){
+
+}
+
+
+void setMovieList(movies::Movie*) {
+    
+}
