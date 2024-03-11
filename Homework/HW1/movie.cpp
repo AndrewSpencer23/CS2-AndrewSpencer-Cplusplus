@@ -11,60 +11,60 @@ movies::Movie::~Movie() {
 } // Destructor
 
 
-string getId(){
-
-} // Getters
-
-
-string getTitle() {
-
-}
-
-
-int getYear() {
-
-}
-
-
-string getGenre() {
-
-}
-
-
-float getRating() {
-
-}
-
-
-string getDirector() {
-
-}
-
-void setId(string) {
-
+void movies::Movie::setId(string id) {
+    _id = id;
 } // Setters
 
 
-void setTitle(string) {
-
+void movies::Movie::setTitle(string title) {
+    _title = title;
 }
 
 
-void setYear(int) {
-
+void movies::Movie::setYear(int year) {
+    _year = year;
 }
 
 
-void setGenre(string) {
-
+void movies::Movie::setGenre(string genre) {
+    _genre = genre;
 }
 
 
-void setRating(float) {
-
+void movies::Movie::setRating(float rating) {
+    _rating = rating;
 }
 
 
-void setDirector(string) {
+void movies::Movie::setDirector(string director) {
+    _director = director;
+}
 
+string movies::Movie::getId(){
+    return _id;
+} // Getters
+
+
+string movies::Movie::getTitle() {
+    return _director;
+}
+
+
+int movies::Movie::getYear() {
+    return _year;
+}
+
+
+string movies::Movie::getGenre() {
+    return _genre;
+}
+
+
+float movies::Movie::getRating() {
+    return _rating;
+}
+
+
+string movies::Movie::getDirector() {
+    return _director;
 }

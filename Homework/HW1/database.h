@@ -17,13 +17,13 @@ namespace databases {
             void initMovies();
             Database(); // Constructor
             ~Database(); // Destructor
-            
-            int getDbId(); // Getters
-            string getDbName();
-            movies::Movie* getMovieList();
 
             void setDbId(int); // Setters
             void setDbName(string);
             void setMovieList(movies::Movie*);
+
+            int getDbId(); // Getters
+            string getDbName();
+            movies::Movie* getMovieList();
     };
 }
