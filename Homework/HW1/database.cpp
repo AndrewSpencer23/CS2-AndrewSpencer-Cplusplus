@@ -6,6 +6,7 @@ void databases::Database::initMovies() {
     }
 }
 
+
 void removeMovie() {
 
 }
@@ -22,7 +23,7 @@ void displayMovies() {
 
 
 void searchMovie() {
-    
+
 }
 
 
@@ -37,6 +38,7 @@ databases::Database::Database() {
 databases::Database::~Database() {
     delete this;
 } // Destructor
+
 
 void databases::Database::setDbId(int dbId) {
     _dbId = dbId;
