@@ -23,8 +23,8 @@ void databases::Database::setDbId(int dbId) {
 } // Setters
 
 
-void databases::Database::setDbName(string DbName){
-
+void databases::Database::setDbName(string dbName){
+    _dbName = dbName;
 }
 
 
