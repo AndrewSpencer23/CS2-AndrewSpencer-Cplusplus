@@ -14,7 +14,12 @@ namespace databases {
             movies::Movie* _movieList[100];
             int _numMovies;
         public:
-            void initMovies();
+            void initMovies(); // Methods within database class
+            void removeMovie();
+            void addMovie();
+            void displayMovies();
+            void searchMovie();
+
             Database(); // Constructor
             ~Database(); // Destructor
 

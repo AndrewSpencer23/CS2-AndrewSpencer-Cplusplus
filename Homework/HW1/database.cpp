@@ -6,6 +6,26 @@ void databases::Database::initMovies() {
     }
 }
 
+void removeMovie() {
+
+}
+
+
+void addMovie() {
+
+}
+
+
+void displayMovies() {
+
+}
+
+
+void searchMovie() {
+    
+}
+
+
 databases::Database::Database() {
     _dbId = 0;
     _dbName = " ";
