@@ -2,12 +2,16 @@
 
 
 movies::Movie::Movie() {
-
+    _id = " ";
+    _title = " ";
+    _year = 1950;
+    _rating = 0.1;
+    _director = " ";
 } // Constructor
 
 
 movies::Movie::~Movie() {
-
+    delete this;
 } // Destructor
 
 

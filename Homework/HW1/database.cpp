@@ -7,39 +7,42 @@ void databases::Database::initMovies() {
 }
 
 databases::Database::Database() {
-
+    _dbId = 0;
+    _dbName = " ";
+    _numMovies = 0;
+    initMovies();
 } // Constructor
 
 
 databases::Database::~Database() {
-
+    delete this;
 } // Destructor
 
-     
-int getDbId() {
-
-} // Getters
-
-
-string getDbName() {
-
-}
-
-
-movies::Movie* getMovieList() {
-
-}
-
-void setDbId(int) {
-
+void databases::Database::setDbId(int dbId) {
+    _dbId = dbId;
 } // Setters
 
 
-void setDbName(string){
+void databases::Database::setDbName(string DbName){
 
 }
 
 
-void setMovieList(movies::Movie*) {
+void databases::Database::setMovieList(movies::Movie movieList[]) {
     
+}
+
+     
+int databases::Database::getDbId() {
+    return _dbId;
+} // Getters
+
+
+string databases::Database::getDbName() {
+    return _dbName;
+}
+
+
+movies::Movie* databases::Database::getMovieList() {
+
 }

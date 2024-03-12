@@ -9,10 +9,10 @@ using namespace std;
 namespace databases {
     class Database { 
         private: // Declaring variables in class
-            int _db_id;
-            string _dbname;
+            int _dbId;
+            string _dbName;
             movies::Movie* _movieList[100];
-            int _numMovies = 0;
+            int _numMovies;
         public:
             void initMovies();
             Database(); // Constructor
