@@ -10,7 +10,7 @@ points::Point::Point(int X, int Y, points::Point* closestPoint)
 //Destructor
 points::Point::~Point()
 {
-    delete[] nearestPoint;
+    delete this;
 }
 
 //Getters
@@ -58,16 +58,11 @@ void points::Point::setY(int newVal)
 void points::Point::setNearestPoint(Point* newNearestPoint)
 {
     nearestPoint = newNearestPoint;
-    nearestPoint->x = newNearestPoint->x;
-    nearestPoint->y = newNearestPoint->y;
 }
 
 double points::Point::distPoints(Point& point)
 {   
-    *this = point;
-    this->x = point.x;
-    this->y = point.y;
     double distance;
-    distance = sqrt((pow((nearestPoint->x - point.x), 2)) + (pow((nearestPoint->y - point.y), 2)));
+    distance = sqrt((pow((point.x - this->x), 2)) + (pow((point.y - this->y), 2)));
     return distance;
 }
