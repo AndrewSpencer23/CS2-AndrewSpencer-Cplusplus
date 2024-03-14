@@ -49,12 +49,7 @@ void databases::Database::setDbName(string dbName){
     _dbName = dbName;
 }
 
-
-void databases::Database::setMovieList(movies::Movie movieList[]) {
-    
-}
-
-     
+  
 int databases::Database::getDbId() {
     return _dbId;
 } // Getters
@@ -62,9 +57,4 @@ int databases::Database::getDbId() {
 
 string databases::Database::getDbName() {
     return _dbName;
-}
-
-
-movies::Movie* databases::Database::getMovieList() {
-
 }
