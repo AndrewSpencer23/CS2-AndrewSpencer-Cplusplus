@@ -33,14 +33,10 @@ points::Point* points::Point::calcNearestPoint(Point* pointList[], unsigned long
 {
     for(unsigned long i = 0; i < arrSize; i++) {
         if (pointList[i]->distPoints(*pointList[i]) > pointList[i+1]->distPoints(*pointList[i+1])) {
-            pointList[i+1] = pointList[i];
-            pointList[i+1]->x = pointList[i]->x;
-            pointList[i+1]->y = pointList[i]->y;
+            
         }
     }
     pointList[0] = nearestPoint;
-    pointList[0]->x = nearestPoint->x;
-    pointList[0]->y = nearestPoint->y;
     return nearestPoint;
 }
 
@@ -63,6 +59,6 @@ void points::Point::setNearestPoint(Point* newNearestPoint)
 double points::Point::distPoints(Point& point)
 {   
     double distance;
-    distance = sqrt((pow((point.x - this->x), 2)) + (pow((point.y - this->y), 2)));
+    distance = sqrt((pow((point.getX() - this->getX()), 2)) + (pow((point.getX() - this->getY()), 2)));
     return distance;
 }
