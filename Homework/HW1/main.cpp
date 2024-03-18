@@ -9,6 +9,8 @@
 
 using namespace std;
 
+void readFile();
+
 int main(int argc, char* argv[]) {
 
     if(argc >= 2 && (string)argv[1] == "test") // Test loop
@@ -16,10 +18,13 @@ int main(int argc, char* argv[]) {
         return 0;
     }
 
-    int numMovies; // Will update later, this will be how many lines are read in from the movies file.
+    void readFile();
 
-    databases::Database* movieDatabase; // Creating an instance of a movie database as a pointer.
+    return 0;
+}
 
+void readFile() {
+    databases::Database movieDatabase; // Creating an instance of a movie database
     string id;
     string title;
     int year;
@@ -42,7 +47,7 @@ int main(int argc, char* argv[]) {
         iss << rating;
         iss.ignore();
         getline(iss, director, ',');
-        
+
         movies::Movie movie;
 
         movie.setId(id);
@@ -51,10 +56,7 @@ int main(int argc, char* argv[]) {
         movie.setGenre(genre);
         movie.setRating(rating);
         movie.setDirector(director);
-
-        row++;
+        movieDatabase.addMovie(movie);
     }
-    numMovies = row;
     fin.close(); // Closing input stream
-    return 0;
 }
