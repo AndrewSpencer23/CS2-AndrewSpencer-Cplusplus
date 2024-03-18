@@ -25,10 +25,8 @@ namespace databases {
 
             void setDbId(int); // Setters
             void setDbName(string);
-            void setMovieList(movies::Movie*);
 
             int getDbId(); // Getters
             string getDbName();
-            movies::Movie* getMovieList();
     };
 }
