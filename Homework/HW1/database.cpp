@@ -16,13 +16,17 @@ void databases::Database::removeMovie() {
 }
 
 
-void databases::Database::addMovie(movies::Movie movie, int numMovies) {
+void databases::Database::setMovie(movies::Movie movie, int numMovies) {
     if(numMovies < 100) {
         *_movieList[numMovies] = movie;
     }
     else {
         cout << "There are too many movies in the database, cannot add more." << endl;
     }
+}
+
+void databases::Database::addMovie() {
+    
 }
 
 

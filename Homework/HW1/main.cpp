@@ -9,7 +9,14 @@
 
 using namespace std;
 
+#ifdef _WIN32
+#define clearScreen() system ("cls") // not secure!
+#else
+#define clearScreen() system ("clear") // not secure!
+#endif
+
 void readFile();
+int menu();
 
 int main(int argc, char* argv[]) {
 
@@ -17,9 +24,37 @@ int main(int argc, char* argv[]) {
     {
         return 0;
     }
-
-    void readFile();
-
+    int choice;
+    do {
+        readFile();
+        clearScreen();
+        cout << "This program creates a movie database and allows a choice multiple different functions within the database.\n";
+        choice = menu();
+        switch(choice) {
+            case 1:
+                databases::Database::addMovie();
+                break;
+            case 2:
+                databases::Database::removeMovie();
+                break;
+            case 3:
+                databases::Database::searchMovie();
+                break;
+            case 4:
+                databases::Database::displayMovies();
+                break;
+            case 5:
+                break;
+        }
+        if (choice != 5) {
+            cin.ignore();
+            cout << "Enter to continue...";
+            cin.get();
+        }
+    } while (choice != 5);
+    cin.ignore();
+    cout << "Good bye! Enter to quit...";
+    cin.get();
     return 0;
 }
 
@@ -56,8 +91,21 @@ void readFile() {
         movie.setGenre(genre);
         movie.setRating(rating);
         movie.setDirector(director);
-        movieDatabase.addMovie(movie, numMovies);
+        movieDatabase.setMovie(movie, numMovies);
         numMovies++;
     }
     fin.close(); // Closing input stream
+}
+
+int menu() {
+    int choice;
+    cout << "Menu options: \n"
+        << "1. Add a movie to the database\n"
+        << "2. Remove a movie from the database\n"
+        << "3. Search for a movie in the database\n"
+        << "4. Print out all movies in database\n"
+        << "5. Exit the program\n";
+    cout << "Enter your choice: [1-5]: ";
+    cin >> choice;
+    return choice;
 }
