@@ -32,7 +32,7 @@ void readFile() {
     float rating;
     string director;
 
-    int row;
+    int numMovies;
     string tmpLine;
     ifstream fin;
     fin.open("movies.csv"); // Opening movie csv file to read movies into array
@@ -56,7 +56,8 @@ void readFile() {
         movie.setGenre(genre);
         movie.setRating(rating);
         movie.setDirector(director);
-        movieDatabase.addMovie(movie);
+        movieDatabase.addMovie(movie, numMovies);
+        numMovies++;
     }
     fin.close(); // Closing input stream
 }
