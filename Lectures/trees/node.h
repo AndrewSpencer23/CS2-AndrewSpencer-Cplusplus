@@ -1,5 +1,7 @@
 #pragma once
 
+using namespace std;
+
 template <class T1>
 class Node {
     private:

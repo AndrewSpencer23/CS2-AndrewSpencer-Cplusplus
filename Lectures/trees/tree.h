@@ -1,5 +1,7 @@
-#pragma once;
+#pragma once
 #include "node.h"
+
+using namespace std;
 
 template <class T1>
 class Tree {
@@ -21,9 +23,9 @@ void Tree<T1>::insert(T1 data) {
 
 template <class T1>
 Node<T1>* Tree<T1>::insertNode(Node<T1>* root, T1 data) {
-    if(root = nullptr) {
+    if(root == nullptr) {
         Node<T1>* newNode = new Node<T1>();
-        sewNode->setData(data);
+        newNode->setData(data);
         return newNode;
     }
 
