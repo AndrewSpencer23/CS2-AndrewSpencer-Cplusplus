@@ -15,7 +15,7 @@ using namespace std;
 #define clearScreen() system ("clear") // not secure!
 #endif
 
-void readFile();
+void readFile(databases::Database);
 int menu();
 
 int main(int argc, char* argv[]) {
@@ -26,7 +26,8 @@ int main(int argc, char* argv[]) {
     }
     int choice;
     do {
-        readFile();
+        databases::Database movieDatabase; // Creating an instance of a movie database
+        readFile(movieDatabase);
         clearScreen();
         cout << "This program creates a movie database and allows a choice multiple different functions within the database.\n";
         choice = menu();
@@ -58,8 +59,7 @@ int main(int argc, char* argv[]) {
     return 0;
 }
 
-void readFile() {
-    databases::Database movieDatabase; // Creating an instance of a movie database
+void readFile(databases::Database movieDatabase) {
     string id;
     string title;
     int year;
