@@ -2,7 +2,9 @@
 #include <iostream>
 #include <iomanip>
 
+
 using namespace std;
+
 
 void databases::Database::initMovies() {
     for(int i = 0; i < 100; i++) {
@@ -11,9 +13,30 @@ void databases::Database::initMovies() {
 }
 
 
-void databases::Database::removeMovie() {
-    
+
+
+void databases::Database::removeMovie(string removeTitle) {
+    for(int i = 0; i < _numMovies; i++) {
+        if(_movieList[i]->getTitle() == removeTitle) {
+            delete _movieList[i];
+           
+            for(int j = 0; j < _numMovies - 1; j++) {
+                _movieList[j] = _movieList[j + 1];
+            }
+
+
+            _numMovies--;
+
+
+            std::cout << removeTitle << " has been successfully deleted from the movie database." << endl;
+        }
+        else {
+            std::cout << "Movie title not found within the database." << endl;
+        }
+    }
 }
+
+
 
 
 void databases::Database::setMovie(movies::Movie movie, int numMovies) {
@@ -25,9 +48,12 @@ void databases::Database::setMovie(movies::Movie movie, int numMovies) {
     }
 }
 
+
 void databases::Database::addMovie() {
-    
+   
 }
+
+
 
 
 void databases::Database::displayMovies() {
@@ -44,9 +70,92 @@ void databases::Database::displayMovies() {
 }
 
 
-void searchMovie() {
 
+
+void databases::Database::searchMovieGenre(string searchGenre) {
+    for(int i = 0; i < _numMovies; i++) {
+        if(_movieList[i]->getGenre() == searchGenre) {
+            std::cout << searchGenre << " has been successfully been deleted from the movie database." << endl;
+        }
+        else {
+            std::cout << "Movie title not found within the database." << endl;
+        }
+    }
 }
+
+
+
+
+void databases::Database::searchMovieTitle(string searchTitle) {
+    for(int i = 0; i < _numMovies; i++) {
+        if(_movieList[i]->getTitle() == removeTitle) {
+            delete _movieList[i];
+           
+            for(int j = 0; j < _numMovies - 1; j++) {
+                _movieList[j] = _movieList[j + 1];
+            }
+
+
+            _numMovies--;
+
+
+            std::cout << removeTitle << " has been successfully been deleted from the movie database." << endl;
+        }
+        else {
+            std::cout << "Movie title not found within the database." << endl;
+        }
+    }
+}
+
+
+
+
+void databases::Database::searchMovieID(string searchID) {
+    for(int i = 0; i < _numMovies; i++) {
+        if(_movieList[i]->getTitle() == removeTitle) {
+            delete _movieList[i];
+           
+            for(int j = 0; j < _numMovies - 1; j++) {
+                _movieList[j] = _movieList[j + 1];
+            }
+
+
+            _numMovies--;
+
+
+            std::cout << removeTitle << " has been successfully been deleted from the movie database." << endl;
+        }
+        else {
+            std::cout << "Movie title not found within the database." << endl;
+        }
+    }
+}
+
+
+
+
+void databases::Database::searchMovieDirector(string searchDirector) {
+    for(int i = 0; i < _numMovies; i++) {
+        if(_movieList[i]->getTitle() == removeTitle) {
+            delete _movieList[i];
+           
+            for(int j = 0; j < _numMovies - 1; j++) {
+                _movieList[j] = _movieList[j + 1];
+            }
+
+
+            _numMovies--;
+
+
+            std::cout << removeTitle << " has been successfully been deleted from the movie database." << endl;
+        }
+        else {
+            std::cout << "Movie title not found within the database." << endl;
+        }
+    }
+}
+
+
 
 
 databases::Database::Database() {
@@ -57,9 +166,13 @@ databases::Database::Database() {
 } // Constructor
 
 
+
+
 databases::Database::~Database() {
     delete this;
 } // Destructor
+
+
 
 
 void databases::Database::setDbId(int dbId) {
@@ -67,14 +180,19 @@ void databases::Database::setDbId(int dbId) {
 } // Setters
 
 
+
+
 void databases::Database::setDbName(string dbName){
     _dbName = dbName;
 }
 
-  
+
+ 
 int databases::Database::getDbId() {
     return _dbId;
 } // Getters
+
+
 
 
 string databases::Database::getDbName() {

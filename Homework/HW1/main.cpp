@@ -25,9 +25,15 @@ int main(int argc, char* argv[]) {
         return 0;
     }
     int choice;
+    string removeTitle;
+    string searchGenre;
+    string searchTitle;
+    string searchID;
+    string searchDirector;
+
+    databases::Database movieDatabase; // Creating an instance of a movie database
+    readFile(movieDatabase);
     do {
-        databases::Database movieDatabase; // Creating an instance of a movie database
-        readFile(movieDatabase);
         clearScreen();
         cout << "This program creates a movie database and allows a choice multiple different functions within the database.\n";
         choice = menu();
@@ -36,23 +42,34 @@ int main(int argc, char* argv[]) {
                 databases::Database::addMovie();
                 break;
             case 2:
-                databases::Database::removeMovie();
+                cout << "Please enter a movie title in the database to delete: ";
+                getline(cin, removeTitle);
+                databases::Database::removeMovie(removeTitle);
                 break;
             case 3:
-                databases::Database::searchMovie();
+                databases::Database::searchMovieGenre(searchGenre);
                 break;
             case 4:
-                databases::Database::displayMovies();
+                databases::Database::searchMovieTitle(searchTitle);
                 break;
             case 5:
+                databases::Database::searchMovieID(searchID);
+                break;
+            case 6:
+                databases::Database::searchMovieDirector(searchDirector);
+                break;
+            case 7:
+                databases::Database::displayMovies();
+                break;
+            case 8:
                 break;
         }
-        if (choice != 5) {
+        if (choice != 8) {
             cin.ignore();
             cout << "Enter to continue...";
             cin.get();
         }
-    } while (choice != 5);
+    } while (choice != 8);
     cin.ignore();
     cout << "Good bye! Enter to quit...";
     cin.get();
@@ -102,10 +119,13 @@ int menu() {
     cout << "Menu options: \n"
         << "1. Add a movie to the database\n"
         << "2. Remove a movie from the database\n"
-        << "3. Search for a movie in the database\n"
-        << "4. Print out all movies in database\n"
-        << "5. Exit the program\n";
-    cout << "Enter your choice: [1-5]: ";
+        << "3. Search for a movie in the database using genre\n"
+        << "4. Search for a movie in the database\n"
+        << "5. Search for a movie in the database\n"
+        << "6. Search for a movie in the database\n"
+        << "7. Print out all movies in database\n"
+        << "8. Exit the program\n";
+    cout << "Enter your choice: [1-8]: ";
     cin >> choice;
     return choice;
 }
