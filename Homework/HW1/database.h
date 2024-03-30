@@ -19,8 +19,9 @@ namespace databases {
             int _numMovies;
         public:
             void initMovies(); // Methods within database class
+            void readFile();
             void removeMovie(string);
-            void setMovie(movies::Movie, int);
+            void setMovie(movies::Movie*, int);
             void addMovie();
             void displayMovies();
             void searchMovieGenre(string);
