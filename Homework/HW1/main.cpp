@@ -46,16 +46,24 @@ int main(int argc, char* argv[]) {
                 movieDatabase.removeMovie(removeTitle);
                 break;
             case 3:
+                std::cout << "Please enter a movie genre to search for in the database: ";
+                std::getline(cin, searchGenre);
                 movieDatabase.searchMovieGenre(searchGenre);
                 break;
             case 4:
-                movieDatabase.searchMovieTitle(searchTitle);
+            std::cout << "Please enter a movie ID to search for in the database: ";
+                std::getline(cin, searchID);
+                movieDatabase.searchMovieTitle(searchID);
                 break;
             case 5:
-                movieDatabase.searchMovieID(searchID);
+            std::cout << "Please enter a movie director to search for in the database: ";
+                std::getline(cin, searchDirector);
+                movieDatabase.searchMovieID(searchDirector);
                 break;
             case 6:
-                movieDatabase.searchMovieDirector(searchDirector);
+            std::cout << "Please enter a movie title to search for in the database: ";
+                std::getline(cin, searchTitle);
+                movieDatabase.searchMovieDirector(searchTitle);
                 break;
             case 7:
                 movieDatabase.displayMovies();
@@ -83,9 +91,9 @@ int menu() {
         << "1. Add a movie to the database\n"
         << "2. Remove a movie from the database\n"
         << "3. Search for a movie in the database using genre\n"
-        << "4. Search for a movie in the database\n"
-        << "5. Search for a movie in the database\n"
-        << "6. Search for a movie in the database\n"
+        << "4. Search for a movie in the database using ID\n"
+        << "5. Search for a movie in the database using director\n"
+        << "6. Search for a movie in the database using title\n"
         << "7. Print out all movies in database\n"
         << "8. Exit the program\n";
     std::cout << "Enter your choice: [1-8]: ";

@@ -115,13 +115,15 @@ void databases::Database::displayMovies() {
 
 
 void databases::Database::searchMovieGenre(string searchGenre) {
+    bool genreFound = false;
     for(int i = 0; i < _numMovies; i++) {
         if(_movieList[i]->getGenre() == searchGenre) {
-            std::cout << searchGenre << " has been successfully been deleted from the movie database." << endl;
+            std::cout << "The genre: " << searchGenre << " has been successfully found in the movie database." << endl;
+            genreFound = true;
         }
-        else {
-            std::cout << "Movie genre not found within the database." << endl;
-        }
+    }
+    if(genreFound == false) {
+        cout << "Movie not found in the database" << endl;
     }
 }
 
