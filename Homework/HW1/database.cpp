@@ -91,6 +91,52 @@ void databases::Database::setMovie(movies::Movie* movie, int numMovies) {
 void databases::Database::addMovie() {
     string addID;
     string addTitle;
+    int addYear;
+    string addGenre;
+    float addRating;
+    string addDirector;
+    movies::Movie* addedMovie;
+
+    if(_numMovies < 100) {
+        _movieList[_numMovies + 1] = addedMovie;
+    }
+
+    cout << "Please enter an ID for the new movie: ";
+    cin.ignore();
+    getline(cin, addID);
+    addedMovie->setId(addID);
+    cout << endl;
+
+
+    cout << "Please enter a title for the new movie: ";
+    cin.ignore();
+    getline(cin, addTitle);
+    addedMovie->setTitle(addTitle);
+    cout << endl;
+
+    cout << "Please enter a year for the new movie: ";
+    cin >> addYear;
+    addedMovie->setYear(addYear);
+    cout << endl;
+
+    cout << "Please enter a genre for the new movie: ";
+    cin.ignore();
+    getline(cin, addGenre);
+    addedMovie->setGenre(addGenre);
+    cout << endl;
+
+    cout << "Please enter a rating for the new movie: ";
+    cin >> addRating;
+    addedMovie->setRating(addRating);
+    cout << endl;
+
+    cout << "Please enter a director for the new movie: ";
+    cin.ignore();
+    getline(cin, addDirector);
+    addedMovie->setDirector(addDirector);
+    cout << endl;
+
+    cout << "Movie successfully added to the database! Please continue...";
 }
 
 
