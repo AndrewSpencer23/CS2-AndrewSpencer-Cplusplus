@@ -31,13 +31,20 @@ points::Point* points::Point::getNearestPoint()
 
 points::Point* points::Point::calcNearestPoint(Point* pointList[], unsigned long arrSize)
 {
+    float smallestDistance;
+    smallestDistance = 1e9;
+
+    Point* closestPoint;
+
     for(unsigned long i = 0; i < arrSize; i++) {
-        if (pointList[i]->distPoints(*pointList[i]) > pointList[i+1]->distPoints(*pointList[i+1])) {
-            
+        double distance = distPoints(*pointList[i]);
+        if (distance < smallestDistance) {
+            smallestDistance = distance;
+            closestPoint = pointList[i];
         }
     }
-    pointList[0] = nearestPoint;
-    return nearestPoint;
+
+    return closestPoint;
 }
 
 //Setters

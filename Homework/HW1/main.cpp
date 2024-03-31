@@ -42,28 +42,33 @@ int main(int argc, char* argv[]) {
                 break;
             case 2:
                 std::cout << "Please enter a movie title in the database to delete: ";
+                cin.ignore();
                 std::getline(cin, removeTitle);
                 movieDatabase.removeMovie(removeTitle);
                 break;
             case 3:
                 std::cout << "Please enter a movie genre to search for in the database: ";
+                cin.ignore();
                 std::getline(cin, searchGenre);
                 movieDatabase.searchMovieGenre(searchGenre);
                 break;
             case 4:
-            std::cout << "Please enter a movie ID to search for in the database: ";
+                std::cout << "Please enter a movie ID to search for in the database: ";
+                cin.ignore();
                 std::getline(cin, searchID);
-                movieDatabase.searchMovieTitle(searchID);
+                movieDatabase.searchMovieID(searchID);
                 break;
             case 5:
-            std::cout << "Please enter a movie director to search for in the database: ";
+                std::cout << "Please enter a movie director to search for in the database: ";
+                cin.ignore();
                 std::getline(cin, searchDirector);
-                movieDatabase.searchMovieID(searchDirector);
+                movieDatabase.searchMovieDirector(searchDirector);
                 break;
             case 6:
-            std::cout << "Please enter a movie title to search for in the database: ";
+                std::cout << "Please enter a movie title to search for in the database: ";
+                cin.ignore();
                 std::getline(cin, searchTitle);
-                movieDatabase.searchMovieDirector(searchTitle);
+                movieDatabase.searchMovieTitle(searchTitle);
                 break;
             case 7:
                 movieDatabase.displayMovies();
