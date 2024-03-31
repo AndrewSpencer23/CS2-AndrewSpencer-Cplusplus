@@ -31,6 +31,7 @@ void databases::Database::readFile() {
             stringstream iss(tmpLine);
             getline(iss, id, ',');
             getline(iss, title, ',');
+            cout << title << endl;
             iss >> year;
             iss.ignore();
             getline(iss, genre, ',');
@@ -58,8 +59,7 @@ void databases::Database::removeMovie(string removeTitle) {
     bool foundMovie = false;
     for(int i = 0; i < _numMovies; i++) {
         if(_movieList[i]->getTitle() == removeTitle) {
-            delete _movieList[i];
-           
+
             for(int j = i; j < _numMovies - 1; j++) {
                 _movieList[j] = _movieList[j + 1];
             }
@@ -67,11 +67,11 @@ void databases::Database::removeMovie(string removeTitle) {
             _numMovies--;
             foundMovie = true;
 
-            std::cout << removeTitle << " has been successfully deleted from the movie database." << endl;
+            std::cout << removeTitle << " has been successfully deleted from the movie database. Please continue..." << endl;
         }
     }
     if(foundMovie == false) {
-        cout << "Movie not found in database" << endl;
+        cout << "Movie not found in database. Please continue..." << endl;
     }
 }
 
@@ -116,7 +116,7 @@ void databases::Database::searchMovieGenre(string searchGenre) {
     bool genreFound = false;
     for(int i = 0; i < _numMovies; i++) {
         if(_movieList[i]->getGenre() == searchGenre) {
-            std::cout << "The genre: " << searchGenre << " has been successfully found in the movie database." << endl;
+            std::cout << searchGenre << " has been successfully found in the movie database." << endl;
             genreFound = true;
         }
     }
@@ -132,7 +132,7 @@ void databases::Database::searchMovieTitle(string searchTitle) {
     bool titleFound = false;
     for(int i = 0; i < _numMovies; i++) {
         if(_movieList[i]->getTitle() == searchTitle) {
-            std::cout << "The title: " << searchTitle << " has been successfully found in the movie database." << endl;
+            std::cout << searchTitle << " has been successfully found in the movie database." << endl;
             titleFound = true;
         }
     }
@@ -148,7 +148,7 @@ void databases::Database::searchMovieID(string searchID) {
     bool IDFound = false;
     for(int i = 0; i < _numMovies; i++) {
         if(_movieList[i]->getId() == searchID) {
-            std::cout << "The ID: " << searchID << " has been successfully found in the movie database." << endl;
+            std::cout << searchID << " has been successfully found in the movie database." << endl;
             IDFound = true;
         }
     }
@@ -164,7 +164,7 @@ void databases::Database::searchMovieDirector(string searchDirector) {
     bool directorFound = false;
     for(int i = 0; i < _numMovies; i++) {
         if(_movieList[i]->getDirector() == searchDirector) {
-            std::cout << "The director: " << searchDirector << " has been successfully found in the movie database." << endl;
+            std::cout << searchDirector << " has been successfully found in the movie database." << endl;
             directorFound = true;
         }
     }

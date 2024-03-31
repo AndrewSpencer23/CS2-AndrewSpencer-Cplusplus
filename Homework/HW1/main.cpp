@@ -44,6 +44,7 @@ int main(int argc, char* argv[]) {
                 std::cout << "Please enter a movie title in the database to delete: ";
                 cin.ignore();
                 std::getline(cin, removeTitle);
+                clearScreen();
                 movieDatabase.removeMovie(removeTitle);
                 break;
             case 3:

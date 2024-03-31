@@ -50,7 +50,7 @@ string movies::Movie::getId(){
 
 
 string movies::Movie::getTitle() {
-    return _director;
+    return _title;
 }
 
 
