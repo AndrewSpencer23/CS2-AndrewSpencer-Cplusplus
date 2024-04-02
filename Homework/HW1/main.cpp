@@ -29,6 +29,7 @@ int main(int argc, char* argv[]) {
     string searchTitle;
     string searchID;
     string searchDirector;
+    
 
     databases::Database movieDatabase; // Creating an instance of a movie database
     movieDatabase.readFile();
@@ -38,7 +39,9 @@ int main(int argc, char* argv[]) {
         choice = menu();
         switch(choice) {
             case 1:
-                movieDatabase.addMovie();
+                movies::Movie* addedMovie;
+                addedMovie = new movies::Movie();
+                movieDatabase.addMovie(addedMovie);
                 break;
             case 2:
                 std::cout << "Please enter a movie title in the database to delete: ";

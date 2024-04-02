@@ -22,7 +22,7 @@ namespace databases {
             void readFile();
             void removeMovie(string);
             void setMovie(movies::Movie*, int);
-            void addMovie();
+            void addMovie(movies::Movie*);
             void displayMovies();
             void searchMovieGenre(string);
             void searchMovieTitle(string);

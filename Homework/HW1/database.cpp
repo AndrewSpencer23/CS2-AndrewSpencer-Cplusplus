@@ -88,23 +88,25 @@ void databases::Database::setMovie(movies::Movie* movie, int numMovies) {
 }
 
 
-void databases::Database::addMovie() {
+void databases::Database::addMovie(movies::Movie* addedMovie) {
     string addID;
     string addTitle;
     int addYear;
     string addGenre;
     float addRating;
     string addDirector;
-    movies::Movie* addedMovie;
 
     if(_numMovies < 100) {
-        _movieList[_numMovies + 1] = addedMovie;
+        cout << "inside if" << endl;
+        setMovie(addedMovie, (_numMovies++));
+        cout << "Outside setmovie" << endl;
     }
 
     cout << "Please enter an ID for the new movie: ";
-    cin.ignore();
-    getline(cin, addID);
+    cin >> addID;
+    cout << "Past getline ";
     addedMovie->setId(addID);
+    cout << "past setid ";
     cout << endl;
 
 
