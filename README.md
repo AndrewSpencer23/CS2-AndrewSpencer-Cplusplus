@@ -19,7 +19,7 @@
 | Description | Build on the movie database and build a functional media database |
 | Due Date | 03/24 |
 | Status | Not Complete |
-| Location | https://github.com/AndrewSpencer23/CS1-ALSpencer/blob/main/Homework/HW2/HW2.cpp |
+| Location |  |
 | Self Grade | 100/100 |
 | Notes | completed the solution and met the expectations that were lined out in the assignment |
 
