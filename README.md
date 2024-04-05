@@ -1,14 +1,5 @@
 # CS2-ALSpencer
 
-| Andrew | Spencer |
-| **Course** | CSCI112 - CS2: Data Structures |
-| **Section** | 3 |
-| **Semester** | Spring 2024 |
-| **Student** | Andrew Spencer |
-| **Mav Username**            | alspencer |
-| **GitHub Username**         | AndrewSpencer23 |
-| **Repository**          | https://github.com/AndrewSpencer23/CS1-ALSpencer |
-
 ## Assignments
 
 ### Assignment #1
