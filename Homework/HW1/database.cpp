@@ -145,10 +145,28 @@ void databases::Database::addMovie(movies::Movie* addedMovie) {
 
 
 void databases::Database::displayMovies() {
+
+    size_t titleWidth = 0;
+    size_t genreWidth = 0;
+    size_t directorWidth = 0;
+
     cout << "DISPLAYING ALL MOVIES TO THE CONSOLE:" << endl << endl;
+
     for(int i = 0; i < _numMovies; i++) {
+        if(_movieList[i]->getTitle().length() > titleWidth) {
+            titleWidth = _movieList[i]->getTitle().length() + 1;
+        }
+
+        if(_movieList[i]->getTitle().length() > titleWidth) {
+            genreWidth = _movieList[i]->getGenre().length() + 1;
+        }
+
+        if(_movieList[i]->getTitle().length() > titleWidth) {
+            directorWidth = _movieList[i]->getDirector().length() + 1;
+        }
+
         cout << "Movie: " << i << endl << endl;
-        cout << "ID: " << _movieList[i]->getId() << endl;
+        cout << setw(10) << "ID: " << _movieList[i]->getId() << endl;
         cout << "TITLE: " << _movieList[i]->getTitle() << endl;
         cout << "YEAR: " << _movieList[i]->getYear() << endl;
         cout << "GENRE: " << _movieList[i]->getGenre() << endl;
