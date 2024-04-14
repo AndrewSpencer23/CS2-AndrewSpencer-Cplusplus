@@ -95,16 +95,12 @@ void databases::Database::addMovie(movies::Movie* addedMovie) {
     string addDirector;
 
     if(_numMovies < 100) {
-        cout << "inside if" << endl;
         setMovie(addedMovie, (_numMovies++));
-        cout << "Outside setmovie" << endl;
     }
 
     cout << "Please enter an ID for the new movie: ";
     cin >> addID;
-    cout << "Past getline ";
     addedMovie->setId(addID);
-    cout << "past setid ";
     cout << endl;
 
 
