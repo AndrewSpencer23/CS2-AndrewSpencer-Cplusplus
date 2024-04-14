@@ -167,11 +167,12 @@ void databases::Database::displayMovies() {
 
         cout << "Movie: " << i << endl << endl;
         cout << setw(10) << "ID: " << _movieList[i]->getId() << endl;
-        cout << "TITLE: " << _movieList[i]->getTitle() << endl;
-        cout << "YEAR: " << _movieList[i]->getYear() << endl;
-        cout << "GENRE: " << _movieList[i]->getGenre() << endl;
-        cout << "RATING: " << _movieList[i]->getRating() << endl;
-        cout << "DIRECTOR: " << _movieList[i]->getDirector() << endl << endl;
+        cout << setw(titleWidth) << "TITLE: " << _movieList[i]->getTitle() << endl;
+        cout << setw(5) << "YEAR: " << _movieList[i]->getYear() << endl;
+        cout << setw(genreWidth) << "GENRE: " << _movieList[i]->getGenre() << endl;
+        cout << setw(4) << "RATING: " << _movieList[i]->getRating() << endl;
+        cout << setw(directorWidth) << "DIRECTOR: " << _movieList[i]->getDirector() << endl << endl;
+
     }
 }
 
