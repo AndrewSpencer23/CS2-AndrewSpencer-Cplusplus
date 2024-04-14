@@ -26,30 +26,28 @@ void databases::Database::readFile() {
     ifstream fin;
     fin.open("movies.csv"); // Opening movie csv file to read movies into array
 
-    if(!fin.eof()) {
-        while (std::getline(fin, tmpLine)) {
-            stringstream iss(tmpLine);
-            getline(iss, id, ',');
-            getline(iss, title, ',');
-            cout << title << endl;
-            iss >> year;
-            iss.ignore();
-            getline(iss, genre, ',');
-            iss >> rating;
-            iss.ignore();
-            getline(iss, director, ',');
+    while (std::getline(fin, tmpLine)) {
+        stringstream iss(tmpLine);
+        getline(iss, id, ',');
+        getline(iss, title, ',');
+        cout << title << endl;
+        iss >> year;
+        iss.ignore();
+        getline(iss, genre, ',');
+        iss >> rating;
+        iss.ignore();
+        getline(iss, director, ',');
 
-            movies::Movie* movie = new movies::Movie();
+        movies::Movie* movie = new movies::Movie();
 
-            movie->setId(id);
-            movie->setTitle(title);
-            movie->setYear(year);
-            movie->setGenre(genre);
-            movie->setRating(rating);
-            movie->setDirector(director);
-            setMovie(movie, _numMovies);
-            _numMovies++;
-        }
+        movie->setId(id);
+        movie->setTitle(title);
+        movie->setYear(year);
+        movie->setGenre(genre);
+        movie->setRating(rating);
+        movie->setDirector(director);
+        setMovie(movie, _numMovies);
+        _numMovies++;
     }
     fin.close(); // Closing input stream
 }
@@ -146,32 +144,16 @@ void databases::Database::addMovie(movies::Movie* addedMovie) {
 
 void databases::Database::displayMovies() {
 
-    size_t titleWidth = 0;
-    size_t genreWidth = 0;
-    size_t directorWidth = 0;
-
     cout << "DISPLAYING ALL MOVIES TO THE CONSOLE:" << endl << endl;
 
     for(int i = 0; i < _numMovies; i++) {
-        if(_movieList[i]->getTitle().length() > titleWidth) {
-            titleWidth = _movieList[i]->getTitle().length() + 1;
-        }
-
-        if(_movieList[i]->getTitle().length() > titleWidth) {
-            genreWidth = _movieList[i]->getGenre().length() + 1;
-        }
-
-        if(_movieList[i]->getTitle().length() > titleWidth) {
-            directorWidth = _movieList[i]->getDirector().length() + 1;
-        }
-
-        cout << "Movie: " << i << endl << endl;
-        cout << setw(10) << "ID: " << _movieList[i]->getId() << endl;
-        cout << setw(titleWidth) << "TITLE: " << _movieList[i]->getTitle() << endl;
+        cout << "Movie: " << i + 1 << endl << "-----------------------------" << endl;
+        cout << setw(4) << "ID: " << _movieList[i]->getId() << endl;
+        cout << setw(5) << "TITLE: " << _movieList[i]->getTitle() << endl;
         cout << setw(5) << "YEAR: " << _movieList[i]->getYear() << endl;
-        cout << setw(genreWidth) << "GENRE: " << _movieList[i]->getGenre() << endl;
-        cout << setw(4) << "RATING: " << _movieList[i]->getRating() << endl;
-        cout << setw(directorWidth) << "DIRECTOR: " << _movieList[i]->getDirector() << endl << endl;
+        cout << setw(5) << "GENRE: " << _movieList[i]->getGenre() << endl;
+        cout << setw(5) << "RATING: " << _movieList[i]->getRating() << endl;
+        cout << setw(5) << "DIRECTOR: " << _movieList[i]->getDirector() << endl << endl;
 
     }
 }
