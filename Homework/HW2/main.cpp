@@ -39,11 +39,13 @@ int main(int argc, char* argv[]) {
         choice = menu();
         switch(choice) {
             case 1:
+                clearScreen();
                 movies::Movie* addedMovie;
                 addedMovie = new movies::Movie();
                 movieDatabase.addMovie(addedMovie);
                 break;
             case 2:
+                clearScreen();
                 std::cout << "Please enter a movie title in the database to delete: ";
                 cin.ignore();
                 std::getline(cin, removeTitle);
@@ -51,30 +53,35 @@ int main(int argc, char* argv[]) {
                 movieDatabase.removeMovie(removeTitle);
                 break;
             case 3:
+                clearScreen();
                 std::cout << "Please enter a movie genre to search for in the database: ";
                 cin.ignore();
                 std::getline(cin, searchGenre);
                 movieDatabase.searchMovieGenre(searchGenre);
                 break;
             case 4:
+                clearScreen();
                 std::cout << "Please enter a movie ID to search for in the database: ";
                 cin.ignore();
                 std::getline(cin, searchID);
                 movieDatabase.searchMovieID(searchID);
                 break;
             case 5:
+                clearScreen();
                 std::cout << "Please enter a movie director to search for in the database: ";
                 cin.ignore();
                 std::getline(cin, searchDirector);
                 movieDatabase.searchMovieDirector(searchDirector);
                 break;
             case 6:
+                clearScreen();
                 std::cout << "Please enter a movie title to search for in the database: ";
                 cin.ignore();
                 std::getline(cin, searchTitle);
                 movieDatabase.searchMovieTitle(searchTitle);
                 break;
             case 7:
+                clearScreen();
                 movieDatabase.displayMovies();
                 break;
             case 8:

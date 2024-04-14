@@ -26,30 +26,28 @@ void databases::Database::readFile() {
     ifstream fin;
     fin.open("movies.csv"); // Opening movie csv file to read movies into array
 
-    if(!fin.eof()) {
-        while (std::getline(fin, tmpLine)) {
-            stringstream iss(tmpLine);
-            getline(iss, id, ',');
-            getline(iss, title, ',');
-            cout << title << endl;
-            iss >> year;
-            iss.ignore();
-            getline(iss, genre, ',');
-            iss >> rating;
-            iss.ignore();
-            getline(iss, director, ',');
+    while (std::getline(fin, tmpLine)) {
+        stringstream iss(tmpLine);
+        getline(iss, id, ',');
+        getline(iss, title, ',');
+        cout << title << endl;
+        iss >> year;
+        iss.ignore();
+        getline(iss, genre, ',');
+        iss >> rating;
+        iss.ignore();
+        getline(iss, director, ',');
 
-            movies::Movie* movie = new movies::Movie();
+        movies::Movie* movie = new movies::Movie();
 
-            movie->setId(id);
-            movie->setTitle(title);
-            movie->setYear(year);
-            movie->setGenre(genre);
-            movie->setRating(rating);
-            movie->setDirector(director);
-            setMovie(movie, _numMovies);
-            _numMovies++;
-        }
+        movie->setId(id);
+        movie->setTitle(title);
+        movie->setYear(year);
+        movie->setGenre(genre);
+        movie->setRating(rating);
+        movie->setDirector(director);
+        setMovie(movie, _numMovies);
+        _numMovies++;
     }
     fin.close(); // Closing input stream
 }
@@ -97,16 +95,12 @@ void databases::Database::addMovie(movies::Movie* addedMovie) {
     string addDirector;
 
     if(_numMovies < 100) {
-        cout << "inside if" << endl;
         setMovie(addedMovie, (_numMovies++));
-        cout << "Outside setmovie" << endl;
     }
 
     cout << "Please enter an ID for the new movie: ";
     cin >> addID;
-    cout << "Past getline ";
     addedMovie->setId(addID);
-    cout << "past setid ";
     cout << endl;
 
 
@@ -145,15 +139,18 @@ void databases::Database::addMovie(movies::Movie* addedMovie) {
 
 
 void databases::Database::displayMovies() {
+
     cout << "DISPLAYING ALL MOVIES TO THE CONSOLE:" << endl << endl;
+
     for(int i = 0; i < _numMovies; i++) {
-        cout << "Movie: " << i << endl << endl;
-        cout << "ID: " << _movieList[i]->getId() << endl;
-        cout << "TITLE: " << _movieList[i]->getTitle() << endl;
-        cout << "YEAR: " << _movieList[i]->getYear() << endl;
-        cout << "GENRE: " << _movieList[i]->getGenre() << endl;
-        cout << "RATING: " << _movieList[i]->getRating() << endl;
-        cout << "DIRECTOR: " << _movieList[i]->getDirector() << endl << endl;
+        cout << "Movie: " << i + 1 << endl << "-----------------------------" << endl;
+        cout << setw(4) << "ID: " << _movieList[i]->getId() << endl;
+        cout << setw(5) << "TITLE: " << _movieList[i]->getTitle() << endl;
+        cout << setw(5) << "YEAR: " << _movieList[i]->getYear() << endl;
+        cout << setw(5) << "GENRE: " << _movieList[i]->getGenre() << endl;
+        cout << setw(5) << "RATING: " << _movieList[i]->getRating() << endl;
+        cout << setw(5) << "DIRECTOR: " << _movieList[i]->getDirector() << endl << endl;
+
     }
 }
 
