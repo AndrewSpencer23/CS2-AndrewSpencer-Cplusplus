@@ -2,9 +2,6 @@
 
 
 movies::Movie::Movie() {
-    _id = " ";
-    _title = " ";
-    _year = 1950;
     _rating = 0.1;
     _director = " ";
 } // Constructor
@@ -13,21 +10,6 @@ movies::Movie::Movie() {
 movies::Movie::~Movie() {
     delete this;
 } // Destructor
-
-
-void movies::Movie::setId(string id) {
-    _id = id;
-} // Setters
-
-
-void movies::Movie::setTitle(string title) {
-    _title = title;
-}
-
-
-void movies::Movie::setYear(int year) {
-    _year = year;
-}
 
 
 void movies::Movie::setGenre(string genre) {
@@ -42,20 +24,6 @@ void movies::Movie::setRating(float rating) {
 
 void movies::Movie::setDirector(string director) {
     _director = director;
-}
-
-string movies::Movie::getId(){
-    return _id;
-} // Getters
-
-
-string movies::Movie::getTitle() {
-    return _title;
-}
-
-
-int movies::Movie::getYear() {
-    return _year;
 }
 
 

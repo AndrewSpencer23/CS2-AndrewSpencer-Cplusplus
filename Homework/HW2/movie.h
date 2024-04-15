@@ -1,15 +1,13 @@
 #pragma once
+#include "media.h"
 
 #include <string>
 
 using namespace std;
 
 namespace movies {
-    class Movie { 
+    class Movie : private media::Media { 
         private:
-            string _id; // declaring variables in class
-            string _title;
-            int _year; 
             string _genre; 
             float _rating; 
             string _director;
@@ -18,16 +16,10 @@ namespace movies {
             Movie(); // Constructor
             ~Movie(); // Destructor
 
-            void setId(string); // Setters
-            void setTitle(string);
-            void setYear(int);
             void setGenre(string);
             void setRating(float);
             void setDirector(string);
 
-            string getId(); // Getters
-            string getTitle();
-            int getYear();
             string getGenre();
             float getRating();
             string getDirector();
