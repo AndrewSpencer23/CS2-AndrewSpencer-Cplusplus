@@ -14,7 +14,7 @@ void databases::Database::initMovies() {
 }
 
 
-void databases::Database::readFile() {
+void databases::Database::readFileMovies() {
     string id;
     string title;
     int year;

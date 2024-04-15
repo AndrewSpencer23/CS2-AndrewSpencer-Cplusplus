@@ -32,7 +32,7 @@ int main(int argc, char* argv[]) {
     
 
     databases::Database movieDatabase; // Creating an instance of a movie database
-    movieDatabase.readFile();
+    movieDatabase.readFileMovies();
     do {
         clearScreen();
         std::cout << "This program creates a movie database and allows a choice multiple different functions within the database.\n";

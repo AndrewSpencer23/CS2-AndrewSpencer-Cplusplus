@@ -6,12 +6,11 @@
 using namespace std;
 
 namespace movies {
-    class Movie : private media::Media { 
+    class Movie : public media::Media { 
         private:
             string _genre; 
             float _rating; 
             string _director;
-
         public:
             Movie(); // Constructor
             ~Movie(); // Destructor
