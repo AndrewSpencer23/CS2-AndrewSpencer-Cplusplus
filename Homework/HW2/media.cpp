@@ -5,6 +5,10 @@ media::Media::Media() {
     _title = " ";
     _year = 1950;
 }
+
+media::Media::~Media() {
+    delete this;
+}
     
 void media::Media::setId(string id) {
     _id = id;
