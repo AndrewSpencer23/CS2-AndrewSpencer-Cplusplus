@@ -14,11 +14,11 @@ namespace media {
             Media(); // Constructor
             ~Media(); // Destructor
             
-            virtual void setId(string); // Setters
+            virtual void setId(string); // Virtual Setters
             virtual void setTitle(string);
             virtual void setYear(int);
 
-            virtual string getId(); // Getters
+            virtual string getId(); // Virtual Getters
             virtual string getTitle();
             virtual int getYear();
 
