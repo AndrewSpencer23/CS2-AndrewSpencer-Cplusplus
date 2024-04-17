@@ -14,6 +14,20 @@ void databases::Database::initMovies() {
 }
 
 
+void databases::Database::initTvShows() {
+    for(int i = 0; i < 100; i++) {
+        _tvShowList[i] = nullptr;
+    }
+}
+
+
+void databases::Database::initMusic() {
+    for(int i = 0; i < 100; i++) {
+        _musicList[i] = nullptr;
+    }
+}
+
+
 void databases::Database::readFileMovies() {
     string id;
     string title;
