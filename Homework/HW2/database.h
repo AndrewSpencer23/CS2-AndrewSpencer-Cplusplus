@@ -28,9 +28,17 @@ namespace databases {
             void initMovies(); // Methods within database class
             void initTvShows();
             void initMusic();
+
             void readFileMovies();
+            void readFileTv();
+            void readFileMusic();
+            
             void removeMovie(string);
+
             void setMovie(movies::Movie*, int);
+            void setMusic(music::Music*, int);
+            void setTvShow(tvshows::tvShow*, int);
+
             void addMovie(movies::Movie*);
             void displayMovies();
             void searchMovieGenre(string);

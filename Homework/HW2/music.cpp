@@ -25,7 +25,7 @@ void music::Music::setNumTracks(int numTracks) {
     _numTracks = numTracks;
 }
 
-void music::Music::setTotalPlaytime(float totalPlaytime) {
+void music::Music::setTotalPlaytime(int totalPlaytime) {
     _totalPlaytime = totalPlaytime;
 }
 
@@ -41,6 +41,6 @@ int music::Music::getNumTracks() {
     return _numTracks;
 }
 
-float music::Music::getTotalPlaytime() {
+int music::Music::getTotalPlaytime() {
     return _totalPlaytime;
 }

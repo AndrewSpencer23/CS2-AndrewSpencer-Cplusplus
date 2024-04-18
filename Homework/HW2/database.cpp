@@ -67,6 +67,87 @@ void databases::Database::readFileMovies() {
 }
 
 
+void databases::Database::readFileTv() {
+    string tvID;
+    string tvTitle;
+    int tvYear;
+    string tvGenre;
+    float tvRating;
+    int numEpisodes;
+
+    string tmpLine;
+    ifstream fin;
+    fin.open("tvshows.csv"); // Opening movie csv file to read movies into array
+
+    while (std::getline(fin, tmpLine)) {
+        stringstream iss(tmpLine);
+        getline(iss, tvID, ',');
+        getline(iss, tvTitle, ',');
+        iss >> tvYear;
+        iss.ignore();
+        getline(iss, tvGenre, ',');
+        iss >> tvRating;
+        iss.ignore();
+        iss >> numEpisodes;
+        iss.ignore();
+
+        tvshows::tvShow* tvShow = new tvshows::tvShow();
+
+        tvShow->setId(tvID);
+        tvShow->setTitle(tvTitle);
+        tvShow->setYear(tvYear);
+        tvShow->setTvGenre(tvGenre);
+        tvShow->setTvRating(tvRating);
+        tvShow->setNumEpisodes(numEpisodes);
+        setTvShow(tvShow, _numTvShows);
+        _numTvShows++;
+    }
+    fin.close(); // Closing input stream
+}
+
+
+void databases::Database::readFileMusic() {
+    string songID;
+    string songTitle;
+    int songYear;
+    string songComposer;
+    string songGenre;
+    int numTracks;
+    int totalPlaytime;
+
+    string tmpLine;
+    ifstream fin;
+    fin.open("music.csv"); // Opening movie csv file to read movies into array
+
+    while (std::getline(fin, tmpLine)) {
+        stringstream iss(tmpLine);
+        getline(iss, songID, ',');
+        getline(iss, songTitle, ',');
+        iss >> songYear;
+        iss.ignore();
+        getline(iss, songComposer, ',');
+        getline(iss, songGenre, ',');
+        iss >> numTracks;
+        iss.ignore();
+        iss >> totalPlaytime;
+        iss.ignore();
+
+        music::Music* music = new music::Music();
+
+        music->setId(songID);
+        music->setTitle(songTitle);
+        music->setYear(songYear);
+        music->setSongComposer(songComposer);
+        music->setSongGenre(songGenre);
+        music->setNumTracks(numTracks);
+        music->setTotalPlaytime(totalPlaytime);
+
+        setMusic(music, _numMusic);
+        _numMusic++;
+    }
+    fin.close(); // Closing input stream
+}
+
 void databases::Database::removeMovie(string removeTitle) {
     bool foundMovie = false;
     for(int i = 0; i < _numMovies; i++) {
@@ -96,6 +177,26 @@ void databases::Database::setMovie(movies::Movie* movie, int numMovies) {
     }
     else {
         cout << "There are too many movies in the database, cannot add more." << endl;
+    }
+}
+
+
+void databases::Database::setMusic(music::Music* music, int numMusic) {
+    if(numMusic < 100) {
+        _musicList[numMusic] = music;
+    }
+    else {
+        cout << "There are too many tracks in the database, cannot add more." << endl;
+    }
+}
+
+
+void databases::Database::setTvShow(tvshows::tvShow* tvShow, int numTvShows) {
+    if(numTvShows < 100) {
+        _tvShowList[numTvShows] = tvShow;
+    }
+    else {
+        cout << "There are too many shows in the database, cannot add more." << endl;
     }
 }
 

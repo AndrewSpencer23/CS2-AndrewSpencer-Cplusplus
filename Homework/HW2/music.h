@@ -10,7 +10,7 @@ namespace music {
             string _songComposer;
             string _songGenre;
             int _numTracks;
-            float _totalPlaytime;
+            int _totalPlaytime;
         public:
             Music();
             ~Music();
@@ -18,11 +18,11 @@ namespace music {
             void setSongComposer(string);
             void setSongGenre(string);
             void setNumTracks(int);
-            void setTotalPlaytime(float);
+            void setTotalPlaytime(int);
 
             string getSongComposer();
             string getSongGenre();
             int getNumTracks();
-            float getTotalPlaytime();
+            int getTotalPlaytime();
     };
 }
