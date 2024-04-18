@@ -44,7 +44,6 @@ void databases::Database::readFileMovies() {
         stringstream iss(tmpLine);
         getline(iss, id, ',');
         getline(iss, title, ',');
-        cout << title << endl;
         iss >> year;
         iss.ignore();
         getline(iss, genre, ',');
@@ -76,10 +75,10 @@ void databases::Database::readFileTv() {
     int numEpisodes;
 
     string tmpLine;
-    ifstream fin;
-    fin.open("tvshows.csv"); // Opening movie csv file to read movies into array
+    ifstream fin1;
+    fin1.open("tvshows.csv"); // Opening movie csv file to read movies into array
 
-    while (std::getline(fin, tmpLine)) {
+    while (std::getline(fin1, tmpLine)) {
         stringstream iss(tmpLine);
         getline(iss, id, ',');
         getline(iss, title, ',');
@@ -102,7 +101,7 @@ void databases::Database::readFileTv() {
         setTvShow(tvShow, _numTvShows);
         _numTvShows++;
     }
-    fin.close(); // Closing input stream
+    fin1.close(); // Closing input stream
 }
 
 
@@ -116,10 +115,10 @@ void databases::Database::readFileMusic() {
     int totalPlaytime;
 
     string tmpLine;
-    ifstream fin;
-    fin.open("music.csv"); // Opening movie csv file to read movies into array
+    ifstream fin2;
+    fin2.open("music.csv"); // Opening movie csv file to read movies into array
 
-    while (std::getline(fin, tmpLine)) {
+    while (std::getline(fin2, tmpLine)) {
         stringstream iss(tmpLine);
         getline(iss, songID, ',');
         getline(iss, songTitle, ',');
@@ -145,7 +144,7 @@ void databases::Database::readFileMusic() {
         setMusic(music, _numMusic);
         _numMusic++;
     }
-    fin.close(); // Closing input stream
+    fin2.close(); // Closing input stream
 }
 
 void databases::Database::removeMovie(string removeTitle) {
