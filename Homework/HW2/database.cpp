@@ -169,6 +169,26 @@ void databases::Database::removeMovie(string removeTitle) {
 }
 
 
+void databases::Database::removeMusic(string removeTitle) {
+    bool foundMovie = false;
+    for(int i = 0; i < _numMovies; i++) {
+        if(_movieList[i]->getTitle() == removeTitle) {
+
+            for(int j = i; j < _numMovies - 1; j++) {
+                _movieList[j] = _movieList[j + 1];
+            }
+
+            _numMovies--;
+            foundMovie = true;
+
+            std::cout << removeTitle << " has been successfully deleted from the movie database. Please continue..." << endl;
+        }
+    }
+    if(foundMovie == false) {
+        cout << "Movie not found in database. Please continue..." << endl;
+    }
+}
+
 
 
 void databases::Database::setMovie(movies::Movie* movie, int numMovies) {
@@ -368,7 +388,6 @@ void databases::Database::displayMovies() {
         cout << setw(5) << "GENRE: " << _movieList[i]->getGenre() << endl;
         cout << setw(5) << "RATING: " << _movieList[i]->getRating() << endl;
         cout << setw(5) << "DIRECTOR: " << _movieList[i]->getDirector() << endl << endl;
-
     }
 }
 
