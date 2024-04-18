@@ -32,7 +32,7 @@ namespace databases {
             void readFileMovies();
             void readFileTv();
             void readFileMusic();
-            
+
             void removeMovie(string);
 
             void setMovie(movies::Movie*, int);
@@ -40,7 +40,11 @@ namespace databases {
             void setTvShow(tvshows::tvShow*, int);
 
             void addMovie(movies::Movie*);
+            void addMusic(music::Music*);
+            void addTvShow(tvshows::tvShow*);
+
             void displayMovies();
+
             void searchMovieGenre(string);
             void searchMovieTitle(string);
             void searchMovieID(string);

@@ -251,6 +251,109 @@ void databases::Database::addMovie(movies::Movie* addedMovie) {
 }
 
 
+void databases::Database::addMusic(music::Music* addedMusic) {
+    string addID;
+    string addTitle;
+    int addYear;
+    string addSongComposer;
+    string addSongGenre;
+    int addNumTracks;
+    int addTotalPlaytime;
+
+    if(_numMusic < 100) {
+        setMusic(addedMusic, (_numMusic++));
+    }
+
+    cout << "Please enter an ID for the new music: ";
+    cin >> addID;
+    addedMusic->setId(addID);
+    cout << endl;
+
+
+    cout << "Please enter a title for the new music: ";
+    cin.ignore();
+    getline(cin, addTitle);
+    addedMusic->setTitle(addTitle);
+    cout << endl;
+
+    cout << "Please enter a year for the new music: ";
+    cin >> addYear;
+    addedMusic->setYear(addYear);
+    cout << endl;
+
+    cout << "Please enter a composer for the new music: ";
+    cin.ignore();
+    getline(cin, addSongComposer);
+    addedMusic->setSongComposer(addSongComposer);
+    cout << endl;
+
+    cout << "Please enter a genre for the new music: ";
+    cin.ignore();
+    getline(cin, addSongGenre);
+    addedMusic->setSongGenre(addSongGenre);
+    cout << endl;
+
+    cout << "Please enter a number of tracks for the new music: ";
+    cin >> addNumTracks;
+    addedMusic->setNumTracks(addNumTracks);
+    cout << endl;
+
+    cout << "Please enter a total playtime for the new music: ";
+    cin >> addTotalPlaytime;
+    addedMusic->setTotalPlaytime(addTotalPlaytime);
+    cout << endl;
+
+    cout << "Music successfully added to the database! Please continue...";
+}
+
+
+void databases::Database::addTvShow(tvshows::tvShow* addedTvShow) {
+    string addID;
+    string addTitle;
+    int addYear;
+    string addTvGenre;
+    float addTvRating;
+    int addNumEpisodes;
+
+    if(_numTvShows < 100) {
+        setTvShow(addedTvShow, (_numTvShows++));
+    }
+
+    cout << "Please enter an ID for the new show: ";
+    cin >> addID;
+    addedTvShow->setId(addID);
+    cout << endl;
+
+
+    cout << "Please enter a title for the new show: ";
+    cin.ignore();
+    getline(cin, addTitle);
+    addedTvShow->setTitle(addTitle);
+    cout << endl;
+
+    cout << "Please enter a year for the new show: ";
+    cin >> addYear;
+    addedTvShow->setYear(addYear);
+    cout << endl;
+
+    cout << "Please enter a genre for the new show: ";
+    cin.ignore();
+    getline(cin, addTvGenre);
+    addedTvShow->setTvGenre(addTvGenre);
+    cout << endl;
+
+    cout << "Please enter a rating for the new show: ";
+    cin >> addTvRating;
+    addedTvShow->setTvRating(addTvRating);
+    cout << endl;
+
+    cout << "Please enter a number of episodes for the new show: ";
+    cin >> addNumEpisodes;
+    addedTvShow->setNumEpisodes(addNumEpisodes);
+    cout << endl;
+
+    cout << "show successfully added to the database! Please continue...";
+}
 
 
 void databases::Database::displayMovies() {
