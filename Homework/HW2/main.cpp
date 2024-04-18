@@ -25,13 +25,12 @@ int main(int argc, char* argv[]) {
     }
     int choice;
     string removeTitle;
-    string searchGenre;
     string searchTitle;
     string searchID;
-    string searchDirector;
+    int searchYear;
     
 
-    databases::Database mediaDatabase; // Creating an instance of a movie database
+    databases::Database mediaDatabase; // Creating an instance of a media database
     mediaDatabase.readFileMovies();
     mediaDatabase.readFileMusic();
     mediaDatabase.readFileTv();
@@ -49,53 +48,66 @@ int main(int argc, char* argv[]) {
                 break;
             case 2:
                 clearScreen();
+                music::Music* addedMusic;
+                addedMusic = new music::Music();
+                mediaDatabase.addMusic(addedMusic);
+                break;
+            case 3:
+                clearScreen();
+                tvshows::tvShow* addedTvShow;
+                addedTvShow = new tvshows::tvShow();
+                mediaDatabase.addTvShow(addedTvShow);
+                break;
+            case 4:
+                clearScreen();
                 std::cout << "Please enter a movie title in the database to delete: ";
                 cin.ignore();
                 std::getline(cin, removeTitle);
                 clearScreen();
                 mediaDatabase.removeMovie(removeTitle);
                 break;
-            case 3:
-                clearScreen();
-                std::cout << "Please enter a movie genre to search for in the database: ";
-                cin.ignore();
-                std::getline(cin, searchGenre);
-                mediaDatabase.searchMovieGenre(searchGenre);
-                break;
-            case 4:
-                clearScreen();
-                std::cout << "Please enter a movie ID to search for in the database: ";
-                cin.ignore();
-                std::getline(cin, searchID);
-                mediaDatabase.searchMovieID(searchID);
-                break;
             case 5:
                 clearScreen();
-                std::cout << "Please enter a movie director to search for in the database: ";
+                std::cout << "Please enter a media ID to search for in the database: ";
                 cin.ignore();
-                std::getline(cin, searchDirector);
-                mediaDatabase.searchMovieDirector(searchDirector);
+                std::getline(cin, searchID);
+                mediaDatabase.searchMediaID(searchID);
                 break;
             case 6:
                 clearScreen();
-                std::cout << "Please enter a movie title to search for in the database: ";
+                std::cout << "Please enter a media title to search for in the database: ";
                 cin.ignore();
                 std::getline(cin, searchTitle);
-                mediaDatabase.searchMovieTitle(searchTitle);
+                mediaDatabase.searchMediaTitle(searchTitle);
                 break;
             case 7:
                 clearScreen();
-                mediaDatabase.displayMovies();
+                std::cout << "Please enter a media year to search for in the database: ";
+                cin.ignore();
+                cin >> searchYear;
+                mediaDatabase.searchMediaYear(searchYear);
                 break;
             case 8:
+                clearScreen();
+                mediaDatabase.displayMovies();
+                break;
+            case 9:
+                clearScreen();
+                mediaDatabase.displayMusic();
+                break;
+            case 10:
+                clearScreen();
+                mediaDatabase.displayTvShows();
+                break;
+            case 11:
                 break;
         }
-        if (choice != 8) {
+        if (choice != 11) {
             std::cin.ignore();
             std::cout << "Enter to continue...";
             std::cin.get();
         }
-    } while (choice != 8);
+    } while (choice != 11);
     std::cin.ignore();
     std::cout << "Good bye! Enter to quit...";
     std::cin.get();
@@ -107,17 +119,18 @@ int main(int argc, char* argv[]) {
 int menu() {
     int choice;
     std::cout << "Menu options: \n"
-        << "Movie Functions:\n"
         << "1. Add a movie to the database\n"
-        << "2. Remove a movie from the database\n"
-        << "3. Search for a movie in the database using genre\n"
-        << "4. Search for a movie in the database using ID\n"
-        << "5. Search for a movie in the database using director\n"
-        << "6. Search for a movie in the database using title\n"
-        << "7. Print out all movies in database\n\n"
-        << "Music Functions:\n"
-        << "8. Exit the program\n";
-    std::cout << "Enter your choice: [1-8]: ";
+        << "2. Add music to the database\n"
+        << "3. Add a tv show to the database\n"
+        << "4. Remove media from the database\n"
+        << "5. Search for media in the database using ID\n"
+        << "6. Search for media in the database using title\n"
+        << "7. Search for media in the database using year\n"
+        << "8. Print out all movies in database\n"
+        << "9. Print out all music in database\n"
+        << "10. Print out all tv shows in database\n"
+        << "11. Exit the program\n";
+    std::cout << "Enter your choice: [1-11]: ";
     std::cin >> choice;
     return choice;
 }

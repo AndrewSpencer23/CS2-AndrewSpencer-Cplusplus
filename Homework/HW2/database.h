@@ -34,7 +34,8 @@ namespace databases {
             void readFileMusic();
 
             void removeMovie(string);
-            void remove
+            void removeMusic(string);
+            void removeTvShow(string);
 
             void setMovie(movies::Movie*, int);
             void setMusic(music::Music*, int);
@@ -45,11 +46,13 @@ namespace databases {
             void addTvShow(tvshows::tvShow*);
 
             void displayMovies();
+            void displayMusic();
+            void displayTvShows();
 
-            void searchMovieGenre(string);
-            void searchMovieTitle(string);
-            void searchMovieID(string);
-            void searchMovieDirector(string);
+            void searchMediaID(string);
+            void searchMediaTitle(string);
+            void searchMediaYear(int);
+
            
             Database(); // Constructor
             ~Database(); // Destructor

@@ -68,9 +68,9 @@ void databases::Database::readFileMovies() {
 
 
 void databases::Database::readFileTv() {
-    string tvID;
-    string tvTitle;
-    int tvYear;
+    string id;
+    string title;
+    int year;
     string tvGenre;
     float tvRating;
     int numEpisodes;
@@ -81,9 +81,9 @@ void databases::Database::readFileTv() {
 
     while (std::getline(fin, tmpLine)) {
         stringstream iss(tmpLine);
-        getline(iss, tvID, ',');
-        getline(iss, tvTitle, ',');
-        iss >> tvYear;
+        getline(iss, id, ',');
+        getline(iss, title, ',');
+        iss >> year;
         iss.ignore();
         getline(iss, tvGenre, ',');
         iss >> tvRating;
@@ -93,9 +93,9 @@ void databases::Database::readFileTv() {
 
         tvshows::tvShow* tvShow = new tvshows::tvShow();
 
-        tvShow->setId(tvID);
-        tvShow->setTitle(tvTitle);
-        tvShow->setYear(tvYear);
+        tvShow->setId(id);
+        tvShow->setTitle(title);
+        tvShow->setYear(year);
         tvShow->setTvGenre(tvGenre);
         tvShow->setTvRating(tvRating);
         tvShow->setNumEpisodes(numEpisodes);
@@ -170,25 +170,45 @@ void databases::Database::removeMovie(string removeTitle) {
 
 
 void databases::Database::removeMusic(string removeTitle) {
-    bool foundMovie = false;
-    for(int i = 0; i < _numMovies; i++) {
-        if(_movieList[i]->getTitle() == removeTitle) {
+    bool foundMusic = false;
+    for(int i = 0; i < _numMusic; i++) {
+        if(_musicList[i]->getTitle() == removeTitle) {
 
             for(int j = i; j < _numMovies - 1; j++) {
-                _movieList[j] = _movieList[j + 1];
+                _musicList[j] = _musicList[j + 1];
             }
 
-            _numMovies--;
-            foundMovie = true;
+            _numMusic--;
+            foundMusic = true;
 
-            std::cout << removeTitle << " has been successfully deleted from the movie database. Please continue..." << endl;
+            std::cout << removeTitle << " has been successfully deleted from the music database. Please continue..." << endl;
         }
     }
-    if(foundMovie == false) {
-        cout << "Movie not found in database. Please continue..." << endl;
+    if(foundMusic == false) {
+        cout << "Music not found in database. Please continue..." << endl;
     }
 }
 
+
+void databases::Database::removeTvShow(string removeTitle) {
+    bool foundTvShow = false;
+    for(int i = 0; i < _numTvShows; i++) {
+        if(_tvShowList[i]->getTitle() == removeTitle) {
+
+            for(int j = i; j < _numTvShows - 1; j++) {
+                _tvShowList[j] = _tvShowList[j + 1];
+            }
+
+            _numTvShows--;
+            foundTvShow = true;
+
+            std::cout << removeTitle << " has been successfully deleted from the tv show database. Please continue..." << endl;
+        }
+    }
+    if(foundTvShow == false) {
+        cout << "Tv show not found in database. Please continue..." << endl;
+    }
+}
 
 
 void databases::Database::setMovie(movies::Movie* movie, int numMovies) {
@@ -392,41 +412,40 @@ void databases::Database::displayMovies() {
 }
 
 
+void databases::Database::displayMusic() {
 
+    cout << "DISPLAYING ALL MUSIC TO THE CONSOLE:" << endl << endl;
 
-void databases::Database::searchMovieGenre(string searchGenre) {
-    bool genreFound = false;
-    for(int i = 0; i < _numMovies; i++) {
-        if(_movieList[i]->getGenre() == searchGenre) {
-            std::cout << searchGenre << " has been successfully found in the movie database." << endl;
-            genreFound = true;
-        }
-    }
-    if(genreFound == false) {
-        cout << "Movie not found in the database" << endl;
-    }
-}
-
-
-
-
-void databases::Database::searchMovieTitle(string searchTitle) {
-    bool titleFound = false;
-    for(int i = 0; i < _numMovies; i++) {
-        if(_movieList[i]->getTitle() == searchTitle) {
-            std::cout << searchTitle << " has been successfully found in the movie database." << endl;
-            titleFound = true;
-        }
-    }
-    if(titleFound == false) {
-        cout << "Movie not found in the database" << endl;
+    for(int i = 0; i < _numMusic; i++) {
+        cout << "Music: " << i + 1 << endl << "-----------------------------" << endl;
+        cout << setw(4) << "ID: " << _musicList[i]->getId() << endl;
+        cout << setw(5) << "TITLE: " << _musicList[i]->getTitle() << endl;
+        cout << setw(5) << "YEAR: " << _musicList[i]->getYear() << endl;
+        cout << setw(5) << "COMPOSER: " << _musicList[i]->getSongComposer() << endl;
+        cout << setw(5) << "GENRE: " << _musicList[i]->getSongGenre() << endl;
+        cout << setw(5) << "# OF TRACKS: " << _musicList[i]->getNumTracks() << endl << endl;
+        cout << setw(5) << "TOTAL PLAYTIME: " << _musicList[i]->getTotalPlaytime() << endl << endl;
     }
 }
 
 
+void databases::Database::displayTvShows() {
+
+    cout << "DISPLAYING ALL TV SHOWS TO THE CONSOLE:" << endl << endl;
+
+    for(int i = 0; i < _numTvShows; i++) {
+        cout << "TV SHOW: " << i + 1 << endl << "-----------------------------" << endl;
+        cout << setw(4) << "ID: " << _tvShowList[i]->getId() << endl;
+        cout << setw(5) << "TITLE: " << _tvShowList[i]->getTitle() << endl;
+        cout << setw(5) << "YEAR: " << _tvShowList[i]->getYear() << endl;
+        cout << setw(5) << "GENRE: " << _tvShowList[i]->getTvGenre() << endl;
+        cout << setw(5) << "RATING: " << _tvShowList[i]->getTvRating() << endl;
+        cout << setw(5) << "# OF EPISODES: " << _tvShowList[i]->getNumEpisodes() << endl << endl;
+    }
+}
 
 
-void databases::Database::searchMovieID(string searchID) {
+void databases::Database::searchMediaID(string searchID) {
     bool IDFound = false;
     for(int i = 0; i < _numMovies; i++) {
         if(_movieList[i]->getId() == searchID) {
@@ -434,28 +453,76 @@ void databases::Database::searchMovieID(string searchID) {
             IDFound = true;
         }
     }
-    if(IDFound == false) {
-        cout << "Movie not found in the database" << endl;
-    }
-}
-
-
-
-
-void databases::Database::searchMovieDirector(string searchDirector) {
-    bool directorFound = false;
-    for(int i = 0; i < _numMovies; i++) {
-        if(_movieList[i]->getDirector() == searchDirector) {
-            std::cout << searchDirector << " has been successfully found in the movie database." << endl;
-            directorFound = true;
+    for(int i = 0; i < _numMusic; i++) {
+        if(_musicList[i]->getId() == searchID) {
+            std::cout << searchID << " has been successfully found in the music database." << endl;
+            IDFound = true;
         }
     }
-    if(directorFound == false) {
-        cout << "Movie not found in the database" << endl;
+    for(int i = 0; i < _numTvShows; i++) {
+        if(_tvShowList[i]->getId() == searchID) {
+            std::cout << searchID << " has been successfully found in the tv show database." << endl;
+            IDFound = true;
+        }
+    }
+    if(IDFound == false) {
+        cout << "ID not found in the media database" << endl;
     }
 }
 
 
+
+
+void databases::Database::searchMediaTitle(string searchTitle) {
+    bool titleFound = false;
+    for(int i = 0; i < _numMovies; i++) {
+        if(_movieList[i]->getTitle() == searchTitle) {
+            std::cout << searchTitle << " has been successfully found in the movie database." << endl;
+            titleFound = true;
+        }
+    }
+    for(int i = 0; i < _numMusic; i++) {
+        if(_musicList[i]->getTitle() == searchTitle) {
+            std::cout << searchTitle << " has been successfully found in the music database." << endl;
+            titleFound = true;
+        }
+    }
+    for(int i = 0; i < _numTvShows; i++) {
+        if(_tvShowList[i]->getTitle() == searchTitle) {
+            std::cout << searchTitle << " has been successfully found in the tv show database." << endl;
+            titleFound = true;
+        }
+    }
+    if(titleFound == false) {
+        cout << "Title not found in the media database" << endl;
+    }
+}
+
+
+void databases::Database::searchMediaYear(int searchYear) {
+    bool yearFound = false;
+    for(int i = 0; i < _numMovies; i++) {
+        if(_movieList[i]->getYear() == searchYear) {
+            std::cout << searchYear << " has been successfully found in the movie database." << endl;
+            yearFound = true;
+        }
+    }
+    for(int i = 0; i < _numMusic; i++) {
+        if(_musicList[i]->getYear() == searchYear) {
+            std::cout << searchYear << " has been successfully found in the music database." << endl;
+            yearFound = true;
+        }
+    }
+    for(int i = 0; i < _numTvShows; i++) {
+        if(_tvShowList[i]->getYear() == searchYear) {
+            std::cout << searchYear << " has been successfully found in the tv show database." << endl;
+            yearFound = true;
+        }
+    }
+    if(yearFound == false) {
+        cout << "Year not found in the media database" << endl;
+    }
+}
 
 
 databases::Database::Database() {

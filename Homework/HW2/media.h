@@ -22,6 +22,6 @@ namespace media {
             virtual string getTitle();
             virtual int getYear();
 
-            virtual string displayInfo();
+            // virtual string displayInfo();
     };
 }
