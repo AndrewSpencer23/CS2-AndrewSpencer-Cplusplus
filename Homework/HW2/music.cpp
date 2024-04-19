@@ -10,7 +10,7 @@ music::Music::Music() {
 }
 
 music::Music::~Music() {
-    delete this;
+
 }
 
 void music::Music::setSongComposer(string songComposer) {

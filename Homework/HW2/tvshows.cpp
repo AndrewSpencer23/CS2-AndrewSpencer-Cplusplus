@@ -9,7 +9,7 @@ tvshows::tvShow::tvShow() {
 }
 
 tvshows::tvShow::~tvShow() {
-    delete this;
+
 }
 
 void tvshows::tvShow::setTvGenre(string tvGenre) {

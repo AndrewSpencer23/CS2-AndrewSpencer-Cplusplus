@@ -7,7 +7,7 @@ media::Media::Media() {
 }
 
 media::Media::~Media() {
-    delete this;
+
 }
     
 void media::Media::setId(string id) {

@@ -12,7 +12,8 @@ namespace media {
 
         public:
             Media(); // Constructor
-            ~Media(); // Destructor
+            virtual ~Media(); // Destructor
+            
             
             virtual void setId(string); // Virtual Setters
             virtual void setTitle(string);

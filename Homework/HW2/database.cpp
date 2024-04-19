@@ -528,14 +528,26 @@ databases::Database::Database() {
     _dbId = 0;
     _dbName = " ";
     _numMovies = 0;
+    _numMusic = 0;
+    _numTvShows = 0;
     initMovies();
+    initMusic();
+    initTvShows();
 } // Constructor
 
 
 
 
 databases::Database::~Database() {
-    delete this;
+    for(int i = 0; i < _numMovies; i++) {
+        delete _movieList[i];
+    }
+    for(int i = 0; i < _numMusic; i++) {
+        delete _musicList[i];
+    }
+    for(int i = 0; i < _numTvShows; i++) {
+        delete _tvShowList[i];
+    }
 } // Destructor
 
 

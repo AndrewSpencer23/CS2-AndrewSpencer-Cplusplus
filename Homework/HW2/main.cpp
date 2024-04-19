@@ -29,12 +29,10 @@ int main(int argc, char* argv[]) {
     string searchID;
     int searchYear;
     
-
     databases::Database mediaDatabase; // Creating an instance of a media database
     mediaDatabase.readFileMovies();
     mediaDatabase.readFileMusic();
     mediaDatabase.readFileTv();
-
     do {
         clearScreen();
         std::cout << "This program creates a movie database and allows a choice multiple different functions within the database.\n";
