@@ -35,7 +35,7 @@ int main(int argc, char* argv[]) {
     mediaDatabase.readFileTv();
     do {
         clearScreen();
-        std::cout << "This program creates a movie database and allows a choice multiple different functions within the database.\n";
+        std::cout << "This program creates a media database and allows a choice multiple different functions within the database.\n\n";
         choice = menu();
         switch(choice) {
             case 1:
