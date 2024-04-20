@@ -34,7 +34,7 @@ string music::Music::getSongComposer() {
 }
 
 string music::Music::getSongGenre() {
-    return _songComposer;
+    return _songGenre;
 }
 
 int music::Music::getNumTracks() {

@@ -58,11 +58,11 @@ int main(int argc, char* argv[]) {
                 break;
             case 4:
                 clearScreen();
-                std::cout << "Please enter a movie title in the database to delete: ";
+                std::cout << "Please enter a media title in the database to delete: ";
                 cin.ignore();
                 std::getline(cin, removeTitle);
                 clearScreen();
-                mediaDatabase.removeMovie(removeTitle);
+                mediaDatabase.removeMedia(removeTitle);
                 break;
             case 5:
                 clearScreen();

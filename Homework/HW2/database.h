@@ -33,9 +33,7 @@ namespace databases {
             void readFileTv();
             void readFileMusic();
 
-            void removeMovie(string);
-            void removeMusic(string);
-            void removeTvShow(string);
+            void removeMedia(string);
 
             void setMovie(movies::Movie*, int);
             void setMusic(music::Music*, int);

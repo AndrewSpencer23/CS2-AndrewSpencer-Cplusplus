@@ -147,8 +147,11 @@ void databases::Database::readFileMusic() {
     fin2.close(); // Closing input stream
 }
 
-void databases::Database::removeMovie(string removeTitle) {
+void databases::Database::removeMedia(string removeTitle) {
     bool foundMovie = false;
+    bool foundMusic = false;
+    bool foundTvShow = false;
+
     for(int i = 0; i < _numMovies; i++) {
         if(_movieList[i]->getTitle() == removeTitle) {
 
@@ -162,35 +165,7 @@ void databases::Database::removeMovie(string removeTitle) {
             std::cout << removeTitle << " has been successfully deleted from the movie database. Please continue..." << endl;
         }
     }
-    if(foundMovie == false) {
-        cout << "Movie not found in database. Please continue..." << endl;
-    }
-}
 
-
-void databases::Database::removeMusic(string removeTitle) {
-    bool foundMusic = false;
-    for(int i = 0; i < _numMusic; i++) {
-        if(_musicList[i]->getTitle() == removeTitle) {
-
-            for(int j = i; j < _numMovies - 1; j++) {
-                _musicList[j] = _musicList[j + 1];
-            }
-
-            _numMusic--;
-            foundMusic = true;
-
-            std::cout << removeTitle << " has been successfully deleted from the music database. Please continue..." << endl;
-        }
-    }
-    if(foundMusic == false) {
-        cout << "Music not found in database. Please continue..." << endl;
-    }
-}
-
-
-void databases::Database::removeTvShow(string removeTitle) {
-    bool foundTvShow = false;
     for(int i = 0; i < _numTvShows; i++) {
         if(_tvShowList[i]->getTitle() == removeTitle) {
 
@@ -204,8 +179,22 @@ void databases::Database::removeTvShow(string removeTitle) {
             std::cout << removeTitle << " has been successfully deleted from the tv show database. Please continue..." << endl;
         }
     }
-    if(foundTvShow == false) {
-        cout << "Tv show not found in database. Please continue..." << endl;
+    
+    for(int i = 0; i < _numMusic; i++) {
+        if(_musicList[i]->getTitle() == removeTitle) {
+
+            for(int j = i; j < _numMovies - 1; j++) {
+                _musicList[j] = _musicList[j + 1];
+            }
+
+            _numMusic--;
+            foundMusic = true;
+
+            std::cout << removeTitle << " has been successfully deleted from the music database. Please continue..." << endl;
+        }
+    }
+    if(foundMusic == false && foundMovie == false && foundTvShow == false) {
+        cout << "Media not found in database. Please continue..." << endl;
     }
 }
 
@@ -422,7 +411,7 @@ void databases::Database::displayMusic() {
         cout << setw(5) << "YEAR: " << _musicList[i]->getYear() << endl;
         cout << setw(5) << "COMPOSER: " << _musicList[i]->getSongComposer() << endl;
         cout << setw(5) << "GENRE: " << _musicList[i]->getSongGenre() << endl;
-        cout << setw(5) << "# OF TRACKS: " << _musicList[i]->getNumTracks() << endl << endl;
+        cout << setw(5) << "# OF TRACKS: " << _musicList[i]->getNumTracks() << endl;
         cout << setw(5) << "TOTAL PLAYTIME: " << _musicList[i]->getTotalPlaytime() << endl << endl;
     }
 }
