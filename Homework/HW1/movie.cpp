@@ -11,7 +11,7 @@ movies::Movie::Movie() {
 
 
 movies::Movie::~Movie() {
-    delete this;
+
 } // Destructor
 
 

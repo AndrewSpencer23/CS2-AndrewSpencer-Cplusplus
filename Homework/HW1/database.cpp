@@ -232,7 +232,9 @@ databases::Database::Database() {
 
 
 databases::Database::~Database() {
-    delete this;
+    for(int i = 0; i < _numMovies; i++) {
+        delete _movieList[i];
+    }
 } // Destructor
 
 
