@@ -437,19 +437,41 @@ void databases::Database::searchMediaID(string searchID) {
     bool IDFound = false;
     for(int i = 0; i < _numMovies; i++) {
         if(_movieList[i]->getId() == searchID) {
-            std::cout << searchID << " has been successfully found in the movie database." << endl;
+            std::cout << searchID << " has been successfully found in the movie database." << endl << endl;
+            cout << "Movie: " << i + 1 << endl << "-----------------------------" << endl;
+            cout << setw(4) << "ID: " << _movieList[i]->getId() << endl;
+            cout << setw(5) << "TITLE: " << _movieList[i]->getTitle() << endl;
+            cout << setw(5) << "YEAR: " << _movieList[i]->getYear() << endl;
+            cout << setw(5) << "GENRE: " << _movieList[i]->getGenre() << endl;
+            cout << setw(5) << "RATING: " << _movieList[i]->getRating() << endl;
+            cout << setw(5) << "DIRECTOR: " << _movieList[i]->getDirector() << endl << endl;
             IDFound = true;
         }
     }
     for(int i = 0; i < _numMusic; i++) {
         if(_musicList[i]->getId() == searchID) {
-            std::cout << searchID << " has been successfully found in the music database." << endl;
+            std::cout << searchID << " has been successfully found in the music database." << endl << endl;
+            cout << "Music: " << i + 1 << endl << "-----------------------------" << endl;
+            cout << setw(4) << "ID: " << _musicList[i]->getId() << endl;
+            cout << setw(5) << "TITLE: " << _musicList[i]->getTitle() << endl;
+            cout << setw(5) << "YEAR: " << _musicList[i]->getYear() << endl;
+            cout << setw(5) << "COMPOSER: " << _musicList[i]->getSongComposer() << endl;
+            cout << setw(5) << "GENRE: " << _musicList[i]->getSongGenre() << endl;
+            cout << setw(5) << "# OF TRACKS: " << _musicList[i]->getNumTracks() << endl;
+            cout << setw(5) << "TOTAL PLAYTIME: " << _musicList[i]->getTotalPlaytime() << endl << endl;
             IDFound = true;
         }
     }
     for(int i = 0; i < _numTvShows; i++) {
         if(_tvShowList[i]->getId() == searchID) {
-            std::cout << searchID << " has been successfully found in the tv show database." << endl;
+            std::cout << searchID << " has been successfully found in the tv show database." << endl << endl;
+            cout << "TV SHOW: " << i + 1 << endl << "-----------------------------" << endl;
+            cout << setw(4) << "ID: " << _tvShowList[i]->getId() << endl;
+            cout << setw(5) << "TITLE: " << _tvShowList[i]->getTitle() << endl;
+            cout << setw(5) << "YEAR: " << _tvShowList[i]->getYear() << endl;
+            cout << setw(5) << "GENRE: " << _tvShowList[i]->getTvGenre() << endl;
+            cout << setw(5) << "RATING: " << _tvShowList[i]->getTvRating() << endl;
+            cout << setw(5) << "# OF EPISODES: " << _tvShowList[i]->getNumEpisodes() << endl << endl;
             IDFound = true;
         }
     }
@@ -465,19 +487,41 @@ void databases::Database::searchMediaTitle(string searchTitle) {
     bool titleFound = false;
     for(int i = 0; i < _numMovies; i++) {
         if(_movieList[i]->getTitle() == searchTitle) {
-            std::cout << searchTitle << " has been successfully found in the movie database." << endl;
+            std::cout << searchTitle << " has been successfully found in the movie database." << endl << endl;
+            cout << "Movie: " << i + 1 << endl << "-----------------------------" << endl;
+            cout << setw(4) << "ID: " << _movieList[i]->getId() << endl;
+            cout << setw(5) << "TITLE: " << _movieList[i]->getTitle() << endl;
+            cout << setw(5) << "YEAR: " << _movieList[i]->getYear() << endl;
+            cout << setw(5) << "GENRE: " << _movieList[i]->getGenre() << endl;
+            cout << setw(5) << "RATING: " << _movieList[i]->getRating() << endl;
+            cout << setw(5) << "DIRECTOR: " << _movieList[i]->getDirector() << endl << endl;
             titleFound = true;
         }
     }
     for(int i = 0; i < _numMusic; i++) {
         if(_musicList[i]->getTitle() == searchTitle) {
-            std::cout << searchTitle << " has been successfully found in the music database." << endl;
+            std::cout << searchTitle << " has been successfully found in the music database." << endl << endl;
+            cout << "Music: " << i + 1 << endl << "-----------------------------" << endl;
+            cout << setw(4) << "ID: " << _musicList[i]->getId() << endl;
+            cout << setw(5) << "TITLE: " << _musicList[i]->getTitle() << endl;
+            cout << setw(5) << "YEAR: " << _musicList[i]->getYear() << endl;
+            cout << setw(5) << "COMPOSER: " << _musicList[i]->getSongComposer() << endl;
+            cout << setw(5) << "GENRE: " << _musicList[i]->getSongGenre() << endl;
+            cout << setw(5) << "# OF TRACKS: " << _musicList[i]->getNumTracks() << endl;
+            cout << setw(5) << "TOTAL PLAYTIME: " << _musicList[i]->getTotalPlaytime() << endl << endl;
             titleFound = true;
         }
     }
     for(int i = 0; i < _numTvShows; i++) {
         if(_tvShowList[i]->getTitle() == searchTitle) {
-            std::cout << searchTitle << " has been successfully found in the tv show database." << endl;
+            std::cout << searchTitle << " has been successfully found in the tv show database." << endl << endl;
+            cout << "TV SHOW: " << i + 1 << endl << "-----------------------------" << endl;
+            cout << setw(4) << "ID: " << _tvShowList[i]->getId() << endl;
+            cout << setw(5) << "TITLE: " << _tvShowList[i]->getTitle() << endl;
+            cout << setw(5) << "YEAR: " << _tvShowList[i]->getYear() << endl;
+            cout << setw(5) << "GENRE: " << _tvShowList[i]->getTvGenre() << endl;
+            cout << setw(5) << "RATING: " << _tvShowList[i]->getTvRating() << endl;
+            cout << setw(5) << "# OF EPISODES: " << _tvShowList[i]->getNumEpisodes() << endl << endl;
             titleFound = true;
         }
     }
@@ -491,19 +535,40 @@ void databases::Database::searchMediaYear(int searchYear) {
     bool yearFound = false;
     for(int i = 0; i < _numMovies; i++) {
         if(_movieList[i]->getYear() == searchYear) {
-            std::cout << searchYear << " has been successfully found in the movie database." << endl;
+            std::cout << searchYear << " has been successfully found in the movie database." << endl << endl;
+            cout << "Movie: " << i + 1 << endl << "-----------------------------" << endl;
+            cout << setw(4) << "ID: " << _movieList[i]->getId() << endl;
+            cout << setw(5) << "TITLE: " << _movieList[i]->getTitle() << endl;
+            cout << setw(5) << "YEAR: " << _movieList[i]->getYear() << endl;
+            cout << setw(5) << "GENRE: " << _movieList[i]->getGenre() << endl;
+            cout << setw(5) << "RATING: " << _movieList[i]->getRating() << endl;
+            cout << setw(5) << "DIRECTOR: " << _movieList[i]->getDirector() << endl << endl;
             yearFound = true;
         }
     }
     for(int i = 0; i < _numMusic; i++) {
         if(_musicList[i]->getYear() == searchYear) {
-            std::cout << searchYear << " has been successfully found in the music database." << endl;
+            std::cout << searchYear << " has been successfully found in the music database." << endl << endl;
+            cout << setw(4) << "ID: " << _musicList[i]->getId() << endl;
+            cout << setw(5) << "TITLE: " << _musicList[i]->getTitle() << endl;
+            cout << setw(5) << "YEAR: " << _musicList[i]->getYear() << endl;
+            cout << setw(5) << "COMPOSER: " << _musicList[i]->getSongComposer() << endl;
+            cout << setw(5) << "GENRE: " << _musicList[i]->getSongGenre() << endl;
+            cout << setw(5) << "# OF TRACKS: " << _musicList[i]->getNumTracks() << endl;
+            cout << setw(5) << "TOTAL PLAYTIME: " << _musicList[i]->getTotalPlaytime() << endl << endl;
             yearFound = true;
         }
     }
     for(int i = 0; i < _numTvShows; i++) {
         if(_tvShowList[i]->getYear() == searchYear) {
-            std::cout << searchYear << " has been successfully found in the tv show database." << endl;
+            std::cout << searchYear << " has been successfully found in the tv show database." << endl << endl;
+            cout << "TV SHOW: " << i + 1 << endl << "-----------------------------" << endl;
+            cout << setw(4) << "ID: " << _tvShowList[i]->getId() << endl;
+            cout << setw(5) << "TITLE: " << _tvShowList[i]->getTitle() << endl;
+            cout << setw(5) << "YEAR: " << _tvShowList[i]->getYear() << endl;
+            cout << setw(5) << "GENRE: " << _tvShowList[i]->getTvGenre() << endl;
+            cout << setw(5) << "RATING: " << _tvShowList[i]->getTvRating() << endl;
+            cout << setw(5) << "# OF EPISODES: " << _tvShowList[i]->getNumEpisodes() << endl << endl;
             yearFound = true;
         }
     }
