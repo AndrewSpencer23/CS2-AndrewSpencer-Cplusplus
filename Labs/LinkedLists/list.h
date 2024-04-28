@@ -45,9 +45,11 @@ List<T1>::List()
 template <class T1>
 List<T1>::~List()
 {
-    while(_tail != nullptr) {
+    while(_head != nullptr) {
+        Node<T1>* tempNode = new Node<T1>();
+        tempNode = _head;
         _head = _head->getNext();
-        delete _head;
+        delete tempNode;
     }
 }
 
@@ -118,12 +120,13 @@ T1 List<T1>::pop_back()
 template <class T1>
 ostream &operator<<(ostream &os, const List<T1> &list)
 {
-    Node* tempNode = list->_head;
+    Node<T1>* tempNode = new Node<T1>();
+    tempNode = list._head;
     while(tempNode->getNext() != nullptr) {
         os << tempNode->getData() << " ";
         tempNode = tempNode->getNext();
     }
-    os >> tempNode->getData();
+    os << tempNode->getData();
     return os;
 }
 
@@ -131,4 +134,24 @@ ostream &operator<<(ostream &os, const List<T1> &list)
 template <class T1>
 bool List<T1>::operator==(const List<T1>& rhs)
 {
+    if (listSize != rhs.listSize) {
+        return false;
+    }
+
+    Node<T1>* curNode1 = new Node<T1>();
+    Node<T1>* curNode2 = new Node<T1>();
+    curNode1 = _head;
+    curNode2 = rhs._head;
+
+    while(curNode1 != nullptr && curNode2 != nullptr) {
+        if(curNode1->getData() == curNode2->getData()) {
+            return true;
+        }
+        else{
+            curNode1 = curNode1->getNext();
+            curNode2 = curNode2->getNext();
+        }
+    }
+    
+    return false;
 }
