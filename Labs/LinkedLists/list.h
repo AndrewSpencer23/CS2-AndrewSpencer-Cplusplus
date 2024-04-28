@@ -58,7 +58,7 @@ List<T1>::~List()
 template <class T1>
 bool List<T1>::empty()
 {
-    if(listSize == 0 && _head->getNext() == nullptr && _tail->getPrev() == nullptr) {
+    if(listSize == 0 && _head == nullptr && _tail == nullptr) {
         return true;
     }
     else {
@@ -77,8 +77,17 @@ size_t List<T1>::size()
 template <class T1>
 void List<T1>::push_front(T1 data)
 {
-    _head = _head->getNext();
-
+    Node<T1>* newNode = new Node<T1>();
+    if(_head == nullptr) {
+        _head = newNode;
+        _tail = newNode;
+    }
+    else {
+        newNode->setNext(_head);
+        _head->setPrev(newNode);
+        _head = newNode;
+    }
+    listSize++;
 }
 
 // return the first element in the list.
@@ -86,7 +95,13 @@ void List<T1>::push_front(T1 data)
 template <class T1>
 T1 List<T1>::front()
 {
-    return _head->getData();
+    if(_head == nullptr) {
+        cout << "The list is empty" << endl;
+        return 0;
+    }
+    else {
+        return _head->getData();
+    }
 }
 
 // remove the first element from the list and return its data
