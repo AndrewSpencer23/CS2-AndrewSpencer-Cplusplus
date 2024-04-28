@@ -122,10 +122,12 @@ ostream &operator<<(ostream &os, const List<T1> &list)
 {
     Node<T1>* tempNode = new Node<T1>();
     tempNode = list._head;
+    
     while(tempNode->getNext() != nullptr) {
         os << tempNode->getData() << " ";
         tempNode = tempNode->getNext();
     }
+
     os << tempNode->getData();
     return os;
 }
@@ -152,6 +154,6 @@ bool List<T1>::operator==(const List<T1>& rhs)
             curNode2 = curNode2->getNext();
         }
     }
-    
+
     return false;
 }
