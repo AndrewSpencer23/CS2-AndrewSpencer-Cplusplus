@@ -146,6 +146,13 @@ void List<T1>::push_back(T1 data)
 template <class T1>
 T1 List<T1>::back()
 {
+    if(_tail == nullptr) {
+        cout << "The list is empty" << endl;
+        return 0;
+    }
+    else {
+        return _tail->getData();
+    }
 }
 
 // remove the last element from the list and return its data
