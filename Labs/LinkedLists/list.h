@@ -36,12 +36,19 @@ class List
 template <class T1>
 List<T1>::List()
 {
+    _head = nullptr;
+    _tail = nullptr;
+    listSize = 0;
 }
 
 // iteratively delete the list starting at _head
 template <class T1>
 List<T1>::~List()
 {
+    while(_tail != nullptr) {
+        _head = _head->getNext();
+        delete _head;
+    }
 }
 
 // return true if the list is empty, false otherwise.
@@ -49,18 +56,27 @@ List<T1>::~List()
 template <class T1>
 bool List<T1>::empty()
 {
+    if(listSize == 0 && _head->getNext() == nullptr && _tail->getPrev() == nullptr) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 // return number of elements in list
 template <class T1>
 size_t List<T1>::size()
 {
+    return listSize;
 }
 
 // add an element to the beginning of the list, updating _head
 template <class T1>
 void List<T1>::push_front(T1 data)
 {
+    _head = _head->getNext();
+
 }
 
 // return the first element in the list.
@@ -68,6 +84,7 @@ void List<T1>::push_front(T1 data)
 template <class T1>
 T1 List<T1>::front()
 {
+    return _head->getData();
 }
 
 // remove the first element from the list and return its data
