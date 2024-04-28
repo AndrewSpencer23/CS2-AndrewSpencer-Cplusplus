@@ -109,12 +109,36 @@ T1 List<T1>::front()
 template <class T1>
 T1 List<T1>::pop_front()
 {
+    if(_head == nullptr) {
+        cout << "List is empty" << endl;
+        return 0;
+    }
+    else {
+        T1 data;
+        data = _head->getData();
+        _head = _head->getNext();
+        _head->setPrev(nullptr);
+        listSize--;
+        return data;
+    }
 }
 
 // add an element to the end of hte list, updating _tail
 template <class T1>
 void List<T1>::push_back(T1 data)
 {
+    Node<T1>* newNode = new Node<T1>();
+    if(_tail == nullptr) {
+        _head = newNode;
+        _tail = newNode;
+    }
+    else {
+        newNode->setPrev(_tail);
+        newNode->setNext(nullptr);
+        _tail->setNext(newNode);
+        _tail = newNode;
+    }
+    listSize++;
 }
 
 // return the last element in the list.
