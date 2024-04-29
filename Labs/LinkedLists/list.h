@@ -160,6 +160,21 @@ T1 List<T1>::back()
 template <class T1>
 T1 List<T1>::pop_back()
 {
+    if(_tail == nullptr) {
+        cout << "List is empty" << endl;
+        return 0;
+    }
+    else {
+        T1 data;
+        data = _tail->getData();
+        Node<T1>* tempNode = new Node<T1>();
+        tempNode = _tail;
+        _tail = _tail->getPrev();
+        _tail->setNext(nullptr);
+        delete tempNode;
+        listSize--;
+        return data;
+    }
 }
 
 // overloading <<, should return a space separated stream of all of the elements
