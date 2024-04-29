@@ -86,6 +86,7 @@ void List<T1>::push_front(T1 data)
         newNode->setNext(_head);
         _head->setPrev(newNode);
         _head = newNode;
+        _head->setData(data);
     }
     listSize++;
 }
@@ -137,6 +138,7 @@ void List<T1>::push_back(T1 data)
         newNode->setNext(nullptr);
         _tail->setNext(newNode);
         _tail = newNode;
+        _tail->setData(data);
     }
     listSize++;
 }
