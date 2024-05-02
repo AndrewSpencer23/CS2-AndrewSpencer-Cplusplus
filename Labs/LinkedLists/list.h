@@ -133,13 +133,11 @@ void List<T1>::push_back(T1 data)
         _head = newNode;
         _tail = newNode;
     }
-    else {
-        newNode->setPrev(_tail);
-        newNode->setNext(nullptr);
-        _tail->setNext(newNode);
-        _tail = newNode;
-        _tail->setData(data);
-    }
+    newNode->setPrev(_tail);
+    newNode->setNext(nullptr);
+    _tail->setNext(newNode);
+    _tail = newNode;
+    _tail->setData(data);
     listSize++;
 }
 

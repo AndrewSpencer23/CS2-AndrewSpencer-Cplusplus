@@ -3,14 +3,14 @@
 //Constructor
 points::Point::Point(int X, int Y, points::Point* closestPoint)
 {
-    nearestPoint = closestPoint;
-    x = X;
-    y = Y;
+    this->setX(X);
+    this->setY(Y);
+    this->setNearestPoint(closestPoint);
 }
 //Destructor
 points::Point::~Point()
 {
-    delete this;
+
 }
 
 //Getters
