@@ -18,7 +18,8 @@ double evaluateRPN(string expression)
             double number;
             stringstream(token) >> number;
             myStack.push(number);
-        } else {
+        }
+        else {
             double element2 = myStack.pop();
             double element1 = myStack.pop();
             double result;
@@ -51,11 +52,20 @@ double evaluateRPN(string expression)
 
 int main(int argc, char *argv[])
 {
+    cout << "1";
     if(argc >= 2 && (string)argv[1] == "test")
     {
         test();
         return 0;
     }
+    if(argc == 3 && (string)argv[1] == "-p") {
+        cout << argv[2] << " = " << evaluateRPN(argv[2]);
+        return 0;
+    }
+    string expression;
+    cout << "Please enter a RPN string to be evaluated: ";
+    cin >> expression;
+    cout << expression << " = " << evaluateRPN(expression) << endl;
     return 0;
 }
 
