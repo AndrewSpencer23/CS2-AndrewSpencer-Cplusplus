@@ -8,7 +8,7 @@ template <class T1>
 class Stack
 {
     private:
-        Node<T1> *_head;
+        Node<T1> *_top;
         size_t stackSize;
 
     public:
@@ -22,31 +22,31 @@ class Stack
         T1 pop();
 };
 
-// set to nullptr and initialize listSize
+// set to nullptr and initialize stackSize
 template <class T1>
 Stack<T1>::Stack()
 {
-    _head = nullptr;
+    _top = nullptr;
     stackSize = 0;
 }
 
-// iteratively delete the list starting at _head
+// iteratively delete the stack starting at _top
 template <class T1>
 Stack<T1>::~Stack()
 {
-    while(_head != nullptr) {
-        Node<T1>* tempNode = _head;
-        _head = _head->getNext();
+    while(_top != nullptr) {
+        Node<T1>* tempNode = _top;
+        _top = _top->getNext();
         delete tempNode;
     }
 }
 
-// return true if the list is empty, false otherwise.
-// Do not just check listSize, should actually check _head and _tail
+// return true if the stack is empty, false otherwise.
+// Do not just check stackSize, should actually check _top
 template <class T1>
 bool Stack<T1>::empty()
 {
-    if(stackSize == 0 && _head == nullptr) {
+    if(stackSize == 0 && _top == nullptr) {
         return true;
     }
     else {
@@ -68,13 +68,13 @@ void Stack<T1>::push(T1 data)
     Node<T1>* newNode = new Node<T1>();
     if(empty()) {
         newNode->setData(data);
-        _head = newNode;
+        _top = newNode;
         stackSize++;
     }
     else if(!empty()) {
         newNode->setData(data);
-        newNode->setNext(_head);
-        _head = newNode;
+        newNode->setNext(_top);
+        _top = newNode;
         stackSize++;
     }
     delete newNode;
@@ -92,8 +92,8 @@ T1 Stack<T1>::pop()
     }
     else {
         T1 data;
-        data = _head->getData();
-        _head = _head->getNext();
+        data = _top->getData();
+        _top = _top->getNext();
         stackSize--;
         return data;
     }
