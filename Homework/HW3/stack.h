@@ -32,8 +32,7 @@ template <class T1>
 Stack<T1>::Stack()
 {
     _head = nullptr;
-    _tail = nullptr;
-    listSize = 0;
+    stackSize = 0;
 }
 
 // iteratively delete the list starting at _head
@@ -53,7 +52,7 @@ Stack<T1>::~Stack()
 template <class T1>
 bool Stack<T1>::empty()
 {
-    if(listSize == 0 && _head == nullptr && _tail == nullptr) {
+    if(stackSize == 0 && _head == nullptr) {
         return true;
     }
     else {
@@ -65,7 +64,7 @@ bool Stack<T1>::empty()
 template <class T1>
 size_t Stack<T1>::size()
 {
-    return listSize;
+    return stackSize;
 }
 
 // add an element to the beginning of the list, updating _head
@@ -75,7 +74,6 @@ void Stack<T1>::push(T1 data)
     Node<T1>* newNode = new Node<T1>();
     if(_head == nullptr) {
         _head = newNode;
-        _tail = newNode;
     }
     else {
         _head->setPrev(newNode);
