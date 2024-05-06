@@ -1,35 +1,62 @@
 #include <iostream>
 #include <cassert>
+#include <string>
+#include <sstream>
 #include "stack.h"
 
 using namespace std;
 
 void test();
 
-int main(int argc, char* argv[])
+double evaluateRPN(string expression)
 {
+    stringstream iss;
+    Stack<double> myStack;
+    string token;
+    while (iss >> token) {
+        if (isdigit(token[0])) {
+            double number;
+            stringstream(token) >> number;
+            myStack.push(number);
+        } else {
+            double element2 = myStack.pop();
+            double element1 = myStack.pop();
+            double result;
+            switch (token[0]) {
+                case '+':
+                    result = element1 + element2;
+                    break;
+                case '-':
+                    result = element1 - element2;
+                    break;
+                case '*':
+                    result = element1 * element2;
+                    break;
+                case '/':
+                    if (element2 == 0) {
+                        cerr << "Error: Division by zero\n";
+                        return 0.0;
+                    }
+                    result = element1 / element2;
+                    break;
+                default:
+                    cerr << "Error: Unknown operator\n";
+                    return 0.0;
+            }
+            myStack.push(result);
+        }
+    }
+    return myStack.pop();
+}
+
+int main(int argc, char *argv[])
+{
+    Stack<double> myStack;
     if(argc >= 2 && (string)argv[1] == "test")
     {
         test();
         return 0;
     }
-    Stack<int> myStack;
-    int insertNumber = 0;
-
-    cout << "Enter -999 to quit entering elements: ";
-    cin >> insertNumber;
-    while(insertNumber != -999)
-    {
-        myStack.push(insertNumber);
-        cout << "Enter -999 to quit entering elements: ";
-        cin >> insertNumber;
-    }
-    
-    cout << "You entered " << myStack.size() << " elements into the stack." << endl;
-    cout << "The entire stack is: " << myStack << endl;
-
-
-
     return 0;
 }
 

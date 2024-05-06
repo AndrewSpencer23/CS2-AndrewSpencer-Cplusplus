@@ -110,7 +110,7 @@ template <class T1>
 ostream &operator<<(ostream &os, const Stack<T1> &stack)
 {
     Node<T1>* tempNode = new Node<T1>();
-    tempNode = list._head;
+    tempNode = stack._head;
     
     while(tempNode->getNext() != nullptr) {
         os << tempNode->getData() << " ";
@@ -125,7 +125,7 @@ ostream &operator<<(ostream &os, const Stack<T1> &stack)
 template <class T1>
 bool Stack<T1>::operator==(const Stack<T1>& rhs)
 {
-    if (listSize != rhs.listSize) {
+    if (stackSize != rhs.stackSize) {
         return false;
     }
 
