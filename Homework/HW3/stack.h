@@ -77,7 +77,6 @@ void Stack<T1>::push(T1 data)
         _top = newNode;
         stackSize++;
     }
-    delete newNode;
 }
 
 

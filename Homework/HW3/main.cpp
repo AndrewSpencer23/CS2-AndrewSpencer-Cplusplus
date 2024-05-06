@@ -8,16 +8,22 @@ using namespace std;
 
 void test();
 
+bool is_number(const std::string& s)
+{
+    std::string::const_iterator it = s.begin();
+    while (it != s.end() && std::isdigit(*it)) ++it;
+    return !s.empty() && it == s.end();
+}
+
 double evaluateRPN(string expression)
 {
     stringstream iss;
     Stack<double> myStack;
     string token;
+    iss.str(expression);
     while (iss >> token) {
-        if (isdigit(token[0])) {
-            double number;
-            stringstream(token) >> number;
-            myStack.push(number);
+        if(is_number(token)) {
+            myStack.push(stod(token));
         }
         else {
             double element2 = myStack.pop();
@@ -52,7 +58,6 @@ double evaluateRPN(string expression)
 
 int main(int argc, char *argv[])
 {
-    cout << "1";
     if(argc >= 2 && (string)argv[1] == "test")
     {
         test();
