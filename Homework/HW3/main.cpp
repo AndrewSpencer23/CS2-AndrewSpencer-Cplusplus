@@ -13,49 +13,43 @@ int main(int argc, char* argv[])
         test();
         return 0;
     }
-    List<int> myList;
+    Stack<int> myStack;
     int insertNumber = 0;
 
     cout << "Enter -999 to quit entering elements: ";
     cin >> insertNumber;
     while(insertNumber != -999)
     {
-        myList.push_back(insertNumber);
+        myStack.push(insertNumber);
         cout << "Enter -999 to quit entering elements: ";
         cin >> insertNumber;
     }
     
-    cout << "You entered " << myList.size() << " elements." << endl;
-    cout << "The first element is: " << myList.front() << endl;
-    cout << "The last element is: " << myList.back() << endl;
-    cout << "The entire list is: " << myList << endl;
-    
-    cout << endl;
-    cout << "Removing the first element: " << myList.pop_front() << endl;
-    cout << "Removing the last element: " << myList.pop_back() << endl;
-    cout << "The size of the list now is: " << myList.size() << endl;
-    cout << "The entire list is now: " << myList << endl;
+    cout << "You entered " << myStack.size() << " elements into the stack." << endl;
+    cout << "The entire stack is: " << myStack << endl;
+
+
 
     return 0;
 }
 
 void test()
 {
-    List<int> testList1;
-    size_t listSize = 10;
-    for(size_t i = 0; i < listSize; i++)
+    Stack<int> testStack1;
+    size_t stackSize = 10;
+    for(size_t i = 0; i < stackSize; i++)
     {
-        testList1.push_back(i*42);
-        assert(testList1.size() == i + 1);
+        testStack1.push(i*42);
+        assert(testStack1.size() == i + 1);
     }
-    assert(testList1.empty() == false);
-    assert(testList1.size() == 10);
-    for(size_t i = 0; i < listSize; i++)
+    assert(testStack1.empty() == false);
+    assert(testStack1.size() == 10);
+    for(size_t i = 0; i < stackSize; i++)
     {
-        assert((size_t)testList1.pop_front() == i*42);
-        assert(testList1.size() == listSize - i - 1);
+        assert((size_t)testStack1.pop() == i*42);
+        assert(testStack1.size() == stackSize - i - 1);
     }
-    assert(testList1.empty() == true);
+    assert(testStack1.empty() == true);
 
     cout << "All test cases passed" << endl;
 }

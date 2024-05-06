@@ -5,36 +5,31 @@
 using namespace std;
 
 template <class T1>
-class List
+class Stack
 {
     private:
         Node<T1> *_head;
-        Node<T1> *_tail;
-        size_t listSize;
+        size_t stackSize;
 
     public:
-        List();
-        ~List();
+        Stack();
+        ~Stack();
 
         bool empty();
         size_t size();
 
-        void push_front(T1);
-        T1 pop_front();
-        T1 front();
-        void push_back(T1);
-        T1 pop_back();
-        T1 back();
+        void push(T1);
+        T1 pop();
 
-        bool operator==(const List<T1>&);
+        bool operator==(const Stack<T1>&);
         // Have to declare a template for friend functions using a different template variable
         template <class T2>
-        friend ostream &operator<<(ostream &, const List<T2> &);
+        friend ostream &operator<<(ostream &, const Stack<T2> &);
 };
 
 // set to nullptr and initialize listSize
 template <class T1>
-List<T1>::List()
+Stack<T1>::Stack()
 {
     _head = nullptr;
     _tail = nullptr;
@@ -43,7 +38,7 @@ List<T1>::List()
 
 // iteratively delete the list starting at _head
 template <class T1>
-List<T1>::~List()
+Stack<T1>::~Stack()
 {
     while(_head != nullptr) {
         Node<T1>* tempNode = new Node<T1>();
@@ -56,7 +51,7 @@ List<T1>::~List()
 // return true if the list is empty, false otherwise.
 // Do not just check listSize, should actually check _head and _tail
 template <class T1>
-bool List<T1>::empty()
+bool Stack<T1>::empty()
 {
     if(listSize == 0 && _head == nullptr && _tail == nullptr) {
         return true;
@@ -68,14 +63,14 @@ bool List<T1>::empty()
 
 // return number of elements in list
 template <class T1>
-size_t List<T1>::size()
+size_t Stack<T1>::size()
 {
     return listSize;
 }
 
 // add an element to the beginning of the list, updating _head
 template <class T1>
-void List<T1>::push_front(T1 data)
+void Stack<T1>::push(T1 data)
 {
     Node<T1>* newNode = new Node<T1>();
     if(_head == nullptr) {
@@ -91,24 +86,11 @@ void List<T1>::push_front(T1 data)
     listSize++;
 }
 
-// return the first element in the list.
-// if the list is empty, print that out and return 0
-template <class T1>
-T1 List<T1>::front()
-{
-    if(_head == nullptr) {
-        cout << "The list is empty" << endl;
-        return 0;
-    }
-    else {
-        return _head->getData();
-    }
-}
 
 // remove the first element from the list and return its data
 // if the list is empty, print that out and return 0;
 template <class T1>
-T1 List<T1>::pop_front()
+T1 Stack<T1>::pop()
 {
     if(_head == nullptr) {
         cout << "List is empty" << endl;
@@ -124,61 +106,10 @@ T1 List<T1>::pop_front()
     }
 }
 
-// add an element to the end of hte list, updating _tail
-template <class T1>
-void List<T1>::push_back(T1 data)
-{
-    Node<T1>* newNode = new Node<T1>();
-    if(_tail == nullptr) {
-        _head = newNode;
-        _tail = newNode;
-    }
-    _tail->setNext(newNode);
-    newNode->setPrev(_tail);
-    _tail = newNode;
-    _tail->setData(data);
-    listSize++;
-}
-
-// return the last element in the list.
-// if the list is empty, print that out and return 0
-template <class T1>
-T1 List<T1>::back()
-{
-    if(_tail == nullptr) {
-        cout << "The list is empty" << endl;
-        return 0;
-    }
-    else {
-        return _tail->getData();
-    }
-}
-
-// remove the last element from the list and return its data
-// if the list is empty, print that out and return 0;
-template <class T1>
-T1 List<T1>::pop_back()
-{
-    if(_tail == nullptr) {
-        cout << "List is empty" << endl;
-        return 0;
-    }
-    else {
-        T1 data;
-        data = _tail->getData();
-        Node<T1>* tempNode = new Node<T1>();
-        tempNode = _tail;
-        _tail = _tail->getPrev();
-        _tail->setNext(nullptr);
-        delete tempNode;
-        listSize--;
-        return data;
-    }
-}
 
 // overloading <<, should return a space separated stream of all of the elements
 template <class T1>
-ostream &operator<<(ostream &os, const List<T1> &list)
+ostream &operator<<(ostream &os, const Stack<T1> &stack)
 {
     Node<T1>* tempNode = new Node<T1>();
     tempNode = list._head;
@@ -194,7 +125,7 @@ ostream &operator<<(ostream &os, const List<T1> &list)
 
 // should iterate through each list to check that they are exactly the same
 template <class T1>
-bool List<T1>::operator==(const List<T1>& rhs)
+bool Stack<T1>::operator==(const Stack<T1>& rhs)
 {
     if (listSize != rhs.listSize) {
         return false;
