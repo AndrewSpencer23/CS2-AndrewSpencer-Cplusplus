@@ -46,8 +46,7 @@ template <class T1>
 List<T1>::~List()
 {
     while(_head != nullptr) {
-        Node<T1>* tempNode = new Node<T1>();
-        tempNode = _head;
+        Node<T1>* tempNode = _head;
         _head = _head->getNext();
         delete tempNode;
     }

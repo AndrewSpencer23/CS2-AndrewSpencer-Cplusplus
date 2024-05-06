@@ -51,7 +51,6 @@ double evaluateRPN(string expression)
 
 int main(int argc, char *argv[])
 {
-    Stack<double> myStack;
     if(argc >= 2 && (string)argv[1] == "test")
     {
         test();

@@ -20,11 +20,6 @@ class Stack
 
         void push(T1);
         T1 pop();
-
-        bool operator==(const Stack<T1>&);
-        // Have to declare a template for friend functions using a different template variable
-        template <class T2>
-        friend ostream &operator<<(ostream &, const Stack<T2> &);
 };
 
 // set to nullptr and initialize listSize
@@ -40,8 +35,7 @@ template <class T1>
 Stack<T1>::~Stack()
 {
     while(_head != nullptr) {
-        Node<T1>* tempNode = new Node<T1>();
-        tempNode = _head;
+        Node<T1>* tempNode = _head;
         _head = _head->getNext();
         delete tempNode;
     }
@@ -83,6 +77,7 @@ void Stack<T1>::push(T1 data)
         _head = newNode;
         stackSize++;
     }
+    delete newNode;
 }
 
 
@@ -102,47 +97,4 @@ T1 Stack<T1>::pop()
         stackSize--;
         return data;
     }
-}
-
-
-// overloading <<, should return a space separated stream of all of the elements
-template <class T1>
-ostream &operator<<(ostream &os, const Stack<T1> &stack)
-{
-    Node<T1>* tempNode = new Node<T1>();
-    tempNode = stack._head;
-    
-    while(tempNode->getNext() != nullptr) {
-        os << tempNode->getData() << " ";
-        tempNode = tempNode->getNext();
-    }
-
-    os << tempNode->getData();
-    return os;
-}
-
-
-template <class T1>
-bool Stack<T1>::operator==(const Stack<T1>& rhs)
-{
-    if (stackSize != rhs.stackSize) {
-        return false;
-    }
-
-    Node<T1>* curNode1 = new Node<T1>();
-    Node<T1>* curNode2 = new Node<T1>();
-    curNode1 = _head;
-    curNode2 = rhs._head;
-
-    while(curNode1 != nullptr && curNode2 != nullptr) {
-        if(curNode1->getData() == curNode2->getData()) {
-            return true;
-        }
-        else{
-            curNode1 = curNode1->getNext();
-            curNode2 = curNode2->getNext();
-        }
-    }
-
-    return false;
 }
