@@ -67,21 +67,22 @@ size_t Stack<T1>::size()
     return stackSize;
 }
 
-// add an element to the beginning of the list, updating _head
+// add an element to the beginning of the stack, updating _head
 template <class T1>
 void Stack<T1>::push(T1 data)
 {
     Node<T1>* newNode = new Node<T1>();
-    if(_head == nullptr) {
+    if(empty()) {
+        newNode->setData(data);
         _head = newNode;
+        stackSize++;
     }
-    else {
-        _head->setPrev(newNode);
+    else if(!empty()) {
+        newNode->setData(data);
         newNode->setNext(_head);
         _head = newNode;
-        _head->setData(data);
+        stackSize++;
     }
-    listSize++;
 }
 
 
@@ -90,7 +91,7 @@ void Stack<T1>::push(T1 data)
 template <class T1>
 T1 Stack<T1>::pop()
 {
-    if(_head == nullptr) {
+    if(empty()) {
         cout << "List is empty" << endl;
         return 0;
     }
@@ -98,8 +99,7 @@ T1 Stack<T1>::pop()
         T1 data;
         data = _head->getData();
         _head = _head->getNext();
-        _head->setPrev(nullptr);
-        listSize--;
+        stackSize--;
         return data;
     }
 }
@@ -121,7 +121,7 @@ ostream &operator<<(ostream &os, const Stack<T1> &stack)
     return os;
 }
 
-// should iterate through each list to check that they are exactly the same
+
 template <class T1>
 bool Stack<T1>::operator==(const Stack<T1>& rhs)
 {
