@@ -66,17 +66,10 @@ template <class T1>
 void Stack<T1>::push(T1 data)
 {
     Node<T1>* newNode = new Node<T1>();
-    if(empty()) {
-        newNode->setData(data);
-        _top = newNode;
-        stackSize++;
-    }
-    else if(!empty()) {
-        newNode->setData(data);
-        newNode->setNext(_top);
-        _top = newNode;
-        stackSize++;
-    }
+    newNode->setData(data);
+    newNode->setNext(_top);
+    _top = newNode;
+    stackSize++;
 }
 
 
@@ -91,8 +84,11 @@ T1 Stack<T1>::pop()
     }
     else {
         T1 data;
+        Node<T1>* tempNode;
+        tempNode = _top;
         data = _top->getData();
         _top = _top->getNext();
+        delete tempNode;
         stackSize--;
         return data;
     }

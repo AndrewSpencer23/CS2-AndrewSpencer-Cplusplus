@@ -21,11 +21,11 @@ double evaluateRPN(string expression)
     Stack<double> myStack;
     string token;
     iss.str(expression);
-    while (iss >> token) {
-        if(is_number(token)) {
+    while (getline(iss, token, ' ')) {
+        if(is_number(token) && token != " ") {
             myStack.push(stod(token));
         }
-        else {
+        else if(!is_number(token) && token != " "){
             double element2 = myStack.pop();
             double element1 = myStack.pop();
             double result;
@@ -50,6 +50,7 @@ double evaluateRPN(string expression)
                     cerr << "Error: Unknown operator\n";
                     return 0.0;
             }
+            cout << result;
             myStack.push(result);
         }
     }
@@ -69,7 +70,7 @@ int main(int argc, char *argv[])
     }
     string expression;
     cout << "Please enter a RPN string to be evaluated: ";
-    cin >> expression;
+    getline(cin, expression);
     cout << expression << " = " << evaluateRPN(expression) << endl;
     return 0;
 }
