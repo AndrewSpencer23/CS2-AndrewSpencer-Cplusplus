@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
     }
     if(argc == 3 && (string)argv[1] == "-p") {
         cout << argv[2] << " = " << evaluateRPN(argv[2]);
-        return evaluateRPN(argv[2]);
+        return 0;
     }
     string expression;
     cout << "Please enter a RPN string to be evaluated: ";
