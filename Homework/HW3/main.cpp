@@ -64,7 +64,15 @@ int main(int argc, char *argv[])
         return 0;
     }
     if(argc == 3 && (string)argv[1] == "-p") {
-        cout << argv[2] << " = " << evaluateRPN(argv[2]);
+        // cout << (string)argv[2];
+        double answer = evaluateRPN((string)argv[2]);
+        if(answer == 0.0) {
+            cout << "Invalid string" << endl;
+            return 0;
+        }
+        else {
+            cout << answer << endl;
+        }
         return 0;
     }
     string expression;
