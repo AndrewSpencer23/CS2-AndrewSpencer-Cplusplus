@@ -50,7 +50,6 @@ double evaluateRPN(string expression)
                     cerr << "Error: Unknown operator\n";
                     return 0.0;
             }
-            cout << result;
             myStack.push(result);
         }
     }
@@ -66,7 +65,7 @@ int main(int argc, char *argv[])
     }
     if(argc == 3 && (string)argv[1] == "-p") {
         cout << argv[2] << " = " << evaluateRPN(argv[2]);
-        return 0;
+        return evaluateRPN(argv[2]);
     }
     string expression;
     cout << "Please enter a RPN string to be evaluated: ";
