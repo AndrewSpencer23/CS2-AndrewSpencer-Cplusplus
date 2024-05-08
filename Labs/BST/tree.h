@@ -25,6 +25,7 @@ public:
 template <class T1>
 BST<T1>::~BST()
 {
+    destroyTree(_root);
 }
 
 // This should recursively walk the tree and delete a node if both leafs are null. You can return from a void function if you just have the return statement.
@@ -32,6 +33,7 @@ BST<T1>::~BST()
 template <class T1>
 void BST<T1>::destroyTree(Node<T1>* root)
 {
+
     return;
 }
 
@@ -63,14 +65,25 @@ Node<T1> *BST<T1>::minVal(Node<T1> *root)
 template <class T1>
 Node<T1> *BST<T1>::searchData(Node<T1> *root, T1 data)
 {
-    return nullptr;
+    if(root == nullptr || root->getData() == data) {
+        return root;
+    }
+    if(data < root->getData()) {
+        return searchData(root->getLeft(), data);
+    }
+    return searchData(root->getRight(), data);
 }
 
 // Wrapper function for searchData. Pass data, root into searchData and return true if data found, return false if data not found.
 template <class T1>
 bool BST<T1>::search(T1 data)
 {
-    return false;
+    Node<T1>* searchNode;
+    searchNode = searchData(_root, data);
+    if(searchNode == nullptr) {
+        return false;
+    }
+    return true;
 }
 
 // Given a node, recursively walk the tree to print out the inOrder format. That's left->root->right.
@@ -94,11 +107,22 @@ void BST<T1>::inOrder()
 template <class T1>
 Node<T1> *BST<T1>::insertNode(Node<T1> *root, T1 data)
 {
-    return nullptr;
+    if(root == nullptr) {
+        Node<T1>* addedNode = new Node<T1>();
+        addedNode->setData(data);
+        return addedNode;
+    }
+    if(data < root.getData()) {
+        root->setLeft(insertNode(root->getLeft(), data));
+    }
+    else if(data > root.getData()) {
+        root->setRight(insertNode(root->getRight(), data));
+    }
 }
 
 // Wrapper for insertNode. Take in data to pass that and _root to insertNode. Ensure you update _root since if the tree is empty, that would be the new _root.
 template <class T1>
 void BST<T1>::insert(T1 data)
 {
+    _root = insertNode(_root, data);
 }
