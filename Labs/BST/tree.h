@@ -47,7 +47,7 @@ void BST<T1>::destroyTree(Node<T1>* root)
 template <class T1>
 void BST<T1>::remove(T1 data)
 {
-    
+    _root = removeData(_root, data);
 }
 
 // Private method to recursively walk the tree until the data is found.
@@ -91,7 +91,7 @@ template <class T1>
 Node<T1> *BST<T1>::minVal(Node<T1> *root)
 {
     Node<T1>* currentNode = root;
-    while(currentNode->getLeft() != nullptr) {
+    while(currentNode->getLeft() != nullptr && currentNode != nullptr) {
         currentNode = currentNode->getLeft();
     }
     return currentNode;
