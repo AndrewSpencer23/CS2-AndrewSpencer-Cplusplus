@@ -51,7 +51,31 @@ void BST<T1>::remove(T1 data)
 template <class T1>
 Node<T1> *BST<T1>::removeData(Node<T1> *root, T1 data)
 {
-    return nullptr;
+    if(root == nullptr) {
+        return root;
+    }
+    if(data < root->getData()) {
+        root->setLeft(removeData(root->getLeft(), data));
+    }
+    else if(data > root->getData()) {
+        root->setRight(removeData(root->getRight(), data));
+    }
+    else {
+        if(root->getLeft() == nullptr) {
+            Node<T1>* tempNode = root->getRight();
+            delete root;
+            return tempNode;
+        }
+        else if(root->getRight() == nullptr) {
+            Node<T1>* tempNode = root->getLeft();
+            delete root;
+            return tempNode;
+        }
+        Node<T1>* tempNode = minVal(root->getRight());
+        root->setData(tmpNode->getData());
+        root->setRight(removeData(root->getRight(), tmpNode->getData()));
+    }
+    return root;
 }
 
 // Given a node, find the smallest value in that subtree. Return that node
