@@ -33,7 +33,7 @@ BST<T1>::~BST()
 template <class T1>
 void BST<T1>::destroyTree(Node<T1>* root)
 {
-
+    
     return;
 }
 
@@ -72,8 +72,8 @@ Node<T1> *BST<T1>::removeData(Node<T1> *root, T1 data)
             return tempNode;
         }
         Node<T1>* tempNode = minVal(root->getRight());
-        root->setData(tmpNode->getData());
-        root->setRight(removeData(root->getRight(), tmpNode->getData()));
+        root->setData(tempNode->getData());
+        root->setRight(removeData(root->getRight(), tempNode->getData()));
     }
     return root;
 }
@@ -82,7 +82,11 @@ Node<T1> *BST<T1>::removeData(Node<T1> *root, T1 data)
 template <class T1>
 Node<T1> *BST<T1>::minVal(Node<T1> *root)
 {
-    return nullptr;
+    Node<T1>* currentNode = root;
+    while(currentNode != nullptr) {
+        currentNode = currentNode->getLeft();
+    }
+    return currentNode;
 }
 
 // Given data and a node, recursively walk the tree to find that node if it exists.
