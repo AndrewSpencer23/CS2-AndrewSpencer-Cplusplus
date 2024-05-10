@@ -28,11 +28,15 @@ public:
 // Default constructor, set word to "" and counter to 1
 Word::Word()
 {
+    _word = "";
+    _counter = 1;
 }
 
 // Parameterized constructor
 Word::Word(string tmpWord, int tmpCounter)
 {
+    tmpWord = "";
+    tmpCounter = 1;
 }
 
 // return a constructed word with the counter incremented

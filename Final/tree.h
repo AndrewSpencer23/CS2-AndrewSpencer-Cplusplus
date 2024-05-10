@@ -1,6 +1,7 @@
 #pragma once
 #include "node.h"
 
+
 template <class T1>
 class BST
 {
@@ -116,7 +117,7 @@ void BST<T1>::inOrderPrint(Node<T1>* root)
         return;
     }
     inOrderPrint(root->getLeft());
-    cout << root->getData() << " ";
+    std::cout << root->getData() << " ";
     inOrderPrint(root->getRight());
 }
 
@@ -125,7 +126,7 @@ template <class T1>
 void BST<T1>::inOrder()
 {
     inOrderPrint(_root);
-    cout << endl;
+    std::cout << std::endl;
 }
 
 // Give some data and a node, recursively walk the tree until you get to a nullptr and store the value there.
@@ -146,7 +147,7 @@ Node<T1>* BST<T1>::insertNode(Node<T1>* root, T1 data)
         root->setRight(insertNode(root->getRight(), data));
     }
     else {
-        cout << "This data already exists within the tree" << endl;
+        std::cout << "This data already exists within the tree" << std::endl;
     }
     return root;
 }
