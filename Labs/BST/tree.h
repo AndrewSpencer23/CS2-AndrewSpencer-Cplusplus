@@ -160,6 +160,9 @@ Node<T1> *BST<T1>::insertNode(Node<T1> *root, T1 data)
     else if(data > root->getData()) {
         root->setRight(insertNode(root->getRight(), data));
     }
+    else {
+        cout << "This data already exists within the tree" << endl;
+    }
     return root;
 }
 
