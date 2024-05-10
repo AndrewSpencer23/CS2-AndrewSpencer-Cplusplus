@@ -18,7 +18,6 @@ private:
     void destroyTree(Node<T1>*);
 
 public:
-    BST();
     ~BST();
     void insert(T1);
     void inOrder();
@@ -26,8 +25,6 @@ public:
     void remove(T1);
 };
 
-template <class T1>
-BST<T1>::BST() : _root(nullptr) {}
 
 template <class T1>
 BST<T1>::~BST()
