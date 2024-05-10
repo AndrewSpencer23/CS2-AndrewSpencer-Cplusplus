@@ -35,8 +35,8 @@ Word::Word()
 // Parameterized constructor
 Word::Word(string tmpWord, int tmpCounter)
 {
-    tmpWord = "";
-    tmpCounter = 1;
+    _word = tmpWord;
+    _counter = tmpCounter;
 }
 
 // return a constructed word with the counter incremented
