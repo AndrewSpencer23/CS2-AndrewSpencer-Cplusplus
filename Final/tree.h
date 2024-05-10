@@ -76,21 +76,33 @@ Node<T1>* BST<T1>::removeData(Node<T1>* root, T1 data)
 template <class T1>
 Node<T1>* BST<T1>::minVal(Node<T1>* root)
 {
-    return nullptr;
+    Node<T1>* currentNode = root;
+    while(currentNode->getLeft() != nullptr && currentNode != nullptr) {
+        currentNode = currentNode->getLeft();
+    }
+    return currentNode;
 }
 
 // Given data and a node, recursively walk the tree to find that node if it exists.
 template <class T1>
 Node<T1>* BST<T1>::searchData(Node<T1>* root, T1 data)
 {
-    return nullptr;
+    if(root == nullptr || root->getData() == data) {
+        return root;
+    }
+    if(data < root->getData()) {
+        return searchData(root->getLeft(), data);
+    }
+    return searchData(root->getRight(), data);
 }
 
 // Wrapper function for searchData. Pass data, root into searchData and return true if data found, return false if data not found.
 template <class T1>
 bool BST<T1>::search(T1 data)
 {
-    return false;
+    Node<T1>* searchNode;
+    searchNode = searchData(_root, data);
+    return searchNode != nullptr;
 }
 
 // Given a node, recursively walk the tree to print out the inOrder format. That's left->root->right.
@@ -100,12 +112,20 @@ bool BST<T1>::search(T1 data)
 template <class T1>
 void BST<T1>::inOrderPrint(Node<T1>* root)
 {
+    if(root == nullptr) {
+        return;
+    }
+    inOrderPrint(root->getLeft());
+    cout << root->getData() << " ";
+    inOrderPrint(root->getRight());
 }
 
 // Wrapper for inOrderPrint
 template <class T1>
 void BST<T1>::inOrder()
 {
+    inOrderPrint(_root);
+    cout << endl;
 }
 
 // Give some data and a node, recursively walk the tree until you get to a nullptr and store the value there.
@@ -135,6 +155,7 @@ Node<T1>* BST<T1>::insertNode(Node<T1>* root, T1 data)
 template <class T1>
 void BST<T1>::insert(T1 data)
 {
+    _root = insertNode(_root, data);
 }
 
 // Search for the word by calling searchData passing in _root and data.
