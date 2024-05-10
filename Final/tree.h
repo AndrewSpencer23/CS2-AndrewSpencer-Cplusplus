@@ -25,12 +25,16 @@ class BST
 template <class T1>
 BST<T1>::~BST()
 {
+    if(_root != nullptr) {
+        delete _root;
+    }
 }
 
 // Public method that takes in some data and passes that into the removeData method. Don't forget to update _root as you may end up deleting the original root.
 template <class T1>
 void BST<T1>::remove(T1 data)
 {
+    _root = removeData(_root, data);
 }
 
 // Private method to recursively walk the tree until the data is found.
@@ -41,7 +45,31 @@ void BST<T1>::remove(T1 data)
 template <class T1>
 Node<T1>* BST<T1>::removeData(Node<T1>* root, T1 data)
 {
-    return nullptr;
+    if(root == nullptr) {
+        return root;
+    }
+    if(data < root->getData()) {
+        root->setLeft(removeData(root->getLeft(), data));
+    }
+    else if(data > root->getData()) {
+        root->setRight(removeData(root->getRight(), data));
+    }
+    else {
+        if(root->getLeft() == nullptr) {
+            Node<T1>* tempNode = root->getRight();
+            delete root;
+            return tempNode;
+        }
+        else if(root->getRight() == nullptr) {
+            Node<T1>* tempNode = root->getLeft();
+            delete root;
+            return tempNode;
+        }
+        Node<T1>* tempNode = minVal(root->getRight());
+        root->setData(tempNode->getData());
+        root->setRight(removeData(root->getRight(), tempNode->getData()));
+    }
+    return root;
 }
 
 // Given a node, find the smallest value in that subtree. Return that node
@@ -86,7 +114,21 @@ void BST<T1>::inOrder()
 template <class T1>
 Node<T1>* BST<T1>::insertNode(Node<T1>* root, T1 data)
 {
-    return nullptr;
+    if(root == nullptr) {
+        Node<T1>* addedNode = new Node<T1>();
+        addedNode->setData(data);
+        return addedNode;
+    }
+    if(data < root->getData()) {
+        root->setLeft(insertNode(root->getLeft(), data));
+    }
+    else if(data > root->getData()) {
+        root->setRight(insertNode(root->getRight(), data));
+    }
+    else {
+        cout << "This data already exists within the tree" << endl;
+    }
+    return root;
 }
 
 // Wrapper for insertNode. Take in data to pass that and _root to insertNode. Ensure you update _root since if the tree is empty, that would be the new _root.
