@@ -166,6 +166,6 @@ void BST<T1>::increment(T1 data)
 {
     Node<T1>* node = searchData(_root, data);
     if (node != nullptr) {
-        node->setData(node->getData() + 1);
+        node->setData(node->getData()++);
     }
 }
