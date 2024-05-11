@@ -81,6 +81,11 @@ fractions::Fraction fractions::Fraction::simplify(Fraction frac)
 
 void fractions::Fraction::simplify()
 {
+    Fraction newFraction(0,1);
+    int a;
+    a = gcd(_numerator, _denominator);
+    newFraction._numerator = _numerator / a;
+    newFraction._denominator = _denominator / a;
 }
 
 int fractions::Fraction::gcd(int a, int b)
