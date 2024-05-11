@@ -1,111 +1,95 @@
 #include "fractions.h"
 
-fractions::Fraction::Fraction(int numerator, int denominator)
+// Constructor
+fractions::Fraction::Fraction(int numerator, int denominator) 
 {
-    if(denominator != 0) {
+    if (denominator != 0) {
         _numerator = numerator;
         _denominator = denominator;
     }
-    else if(denominator == 0) {
-        cout << "Please enter a numerator" << endl;
+    else {
+        cout << "Please enter a numerator: ";
         cin >> numerator;
-        cout << "Please enter a denominator" << endl;
+        cout << "Please enter a denominator: ";
         cin >> denominator;
-        while(denominator == 0) {
-            cout << "You cant divide by zero, you must enter a new denominator: " << endl;
+        while (denominator == 0) {
+            cout << "You can't divide by zero. Enter a new denominator: ";
             cin >> denominator;
         }
         _denominator = denominator;
         _numerator = numerator;
     }
-    else {
-        cout << _numerator << '/' << _denominator << endl;
-    }
 }
 
-fractions::Fraction fractions::Fraction::operator+(fractions::Fraction const &frac)
+// Arithmetic Operators
+fractions::Fraction fractions::Fraction::operator+(const Fraction &frac) 
 {
-    int commonDenom = 0;
-    commonDenom = _denominator * frac._denominator;
-
-    int num1, num2;
-    num1 = _numerator * frac._denominator;
-    num2 = frac._numerator * _denominator;
-
-    _numerator = num1 + num2;
-    _denominator = commonDenom;
-
-    return Fraction(_numerator, _denominator);
+    int commonDenom = _denominator * frac._denominator;
+    int num1 = _numerator * frac._denominator;
+    int num2 = frac._numerator * _denominator;
+    Fraction result(num1 + num2, commonDenom);
+    result.simplify();
+    return result;
 }
 
-fractions::Fraction fractions::Fraction::operator-(fractions::Fraction const &frac)
+fractions::Fraction fractions::Fraction::operator-(const Fraction &frac) 
 {
-    int commonDenom = 0;
-    commonDenom = _denominator * frac._denominator;
-
-    int num1, num2;
-    num1 = _numerator * frac._denominator;
-    num2 = frac._numerator * _denominator;
-
-    _numerator = num1 - num2;
-    _denominator = commonDenom;
-
-    return Fraction(_numerator, _denominator);
+    int commonDenom = _denominator * frac._denominator;
+    int num1 = _numerator * frac._denominator;
+    int num2 = frac._numerator * _denominator;
+    Fraction result(num1 - num2, commonDenom);
+    result.simplify();
+    return result;
 }
 
-fractions::Fraction fractions::Fraction::operator*(Fraction const &frac)
+fractions::Fraction fractions::Fraction::operator*(const Fraction &frac) 
 {
-    _numerator = _numerator * frac._numerator;
-    _denominator = _denominator * frac._denominator;
-
-    return Fraction(_numerator, _denominator);
+    Fraction result(_numerator * frac._numerator, _denominator * frac._denominator);
+    result.simplify();
+    return result;
 }
 
-fractions::Fraction fractions::Fraction::operator/(Fraction const &frac)
+fractions::Fraction fractions::Fraction::operator/(const Fraction &frac) 
 {
-    _numerator = _numerator * frac._denominator;
-    _denominator = _denominator * frac._numerator;
-
-    return Fraction(_numerator, _denominator);
+    Fraction result(_numerator * frac._denominator, _denominator * frac._numerator);
+    result.simplify();
+    return result;
 }
 
-fractions::Fraction fractions::Fraction::simplify(Fraction frac)
+// Simplification
+fractions::Fraction fractions::Fraction::simplify(Fraction frac) 
 {
-    Fraction newFraction(0,1);
-    int a;
-    a = gcd(frac._numerator, frac._denominator);
+    int a = gcd(frac._numerator, frac._denominator);
+    Fraction newFraction(0, 1);
     newFraction._numerator = frac._numerator / a;
     newFraction._denominator = frac._denominator / a;
-    return Fraction(newFraction);
+    return newFraction;
 }
 
-void fractions::Fraction::simplify()
+void fractions::Fraction::simplify() 
 {
-    Fraction newFraction(0,1);
-    int a;
-    a = gcd(_numerator, _denominator);
-    newFraction._numerator = _numerator / a;
-    newFraction._denominator = _denominator / a;
+    int a = gcd(_numerator, _denominator);
+    _numerator /= a;
+    _denominator /= a;
 }
 
-int fractions::Fraction::gcd(int a, int b)
+// Greatest Common Divisor
+int fractions::Fraction::gcd(int a, int b) 
 {
-    if(b == 0) {
+    if (b == 0) {
         return a;
     }
-    gcd(b, a%b);
+    return gcd(b, a % b);
 }
 
-bool fractions::Fraction::operator==(Fraction const &frac)
+// Output Operator Overload
+std::ostream &fractions::operator<<(std::ostream &os, const Fraction &frac) 
 {
-    bool testEqual = false;
-    if(frac._numerator == _numerator && frac._denominator == _denominator) {
-        testEqual = true;
-    }
-    return testEqual;
+    return os << frac._numerator << "/" << frac._denominator;
 }
 
-ostream &fractions::operator<<(ostream &os, const Fraction &frac)
+// Equality Operator Overload
+bool fractions::Fraction::operator==(const Fraction &frac) 
 {
-    return os << frac._numerator << "/" << frac._denominator << endl;
+    return _numerator == frac._numerator && _denominator == frac._denominator;
 }
