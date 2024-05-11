@@ -90,12 +90,16 @@ void fractions::Fraction::simplify()
 
 int fractions::Fraction::gcd(int a, int b)
 {
-    return 0;
+    if(b == 0) {
+        return a;
+    }
+    gcd(b, a%b);
 }
 
 bool fractions::Fraction::operator==(Fraction const &frac)
 {
-    return false;
+    bool testEqual = false;
+    if(frac._numerator == _numerator && frac._denominator == _denominator)
 }
 
 ostream &fractions::operator<<(ostream &os, const Fraction &frac)
