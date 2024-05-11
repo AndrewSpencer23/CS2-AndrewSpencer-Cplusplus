@@ -37,13 +37,11 @@ points::Point* points::Point::calcNearestPoint(Point* pointList[], unsigned long
     Point* closestPoint;
 
     for(unsigned long i = 0; i < arrSize; i++) {
-        double distance = distPoints(*pointList[i]);
-        if (distance < smallestDistance) {
-            smallestDistance = distance;
+        if(distPoints(*pointList[i]) < smallestDistance) {
+            smallestDistance = distPoints(*pointList[i]);
             closestPoint = pointList[i];
         }
     }
-
     return closestPoint;
 }
 
