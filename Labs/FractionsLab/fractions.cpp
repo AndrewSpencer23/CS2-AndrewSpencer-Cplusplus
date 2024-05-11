@@ -2,8 +2,25 @@
 
 fractions::Fraction::Fraction(int numerator, int denominator)
 {
-    _numerator = numerator;
-    _denominator = denominator;
+    if(denominator != 0) {
+        _numerator = numerator;
+        _denominator = denominator;
+    }
+    else if(denominator == 0) {
+        cout << "Please enter a numerator" << endl;
+        cin >> numerator;
+        cout << "Please enter a denominator" << endl;
+        cin >> denominator;
+        while(denominator == 0) {
+            cout << "You cant divide by zero, you must enter a new denominator: " << endl;
+            cin >> denominator;
+        }
+        _denominator = denominator;
+        _numerator = numerator;
+    }
+    else {
+        cout << _numerator << '/' << _denominator << endl;
+    }
 }
 
 fractions::Fraction fractions::Fraction::operator+(fractions::Fraction const &frac)
@@ -54,7 +71,12 @@ fractions::Fraction fractions::Fraction::operator/(Fraction const &frac)
 
 fractions::Fraction fractions::Fraction::simplify(Fraction frac)
 {
-    return Fraction(0, 1);
+    Fraction newFraction(0,1);
+    int a;
+    a = gcd(frac._numerator, frac._denominator);
+    newFraction._numerator = frac._numerator / a;
+    newFraction._denominator = frac._denominator / a;
+    return Fraction(newFraction);
 }
 
 void fractions::Fraction::simplify()
