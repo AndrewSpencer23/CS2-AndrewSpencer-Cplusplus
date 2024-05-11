@@ -43,7 +43,8 @@ Word::Word(string tmpWord, int tmpCounter)
 // You do not need to worry about the counter parameter since this will have its own _counter
 Word Word::operator++(int counter)
 {
-    return Word();
+    _counter++;
+    return *this;
 }
 
 // Check if two Words are equal (compare _word)
