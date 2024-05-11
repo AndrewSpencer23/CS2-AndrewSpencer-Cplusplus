@@ -50,17 +50,17 @@ Word Word::operator++(int counter)
 // Check if two Words are equal (compare _word)
 bool Word::operator==(const Word &otherWord)
 {
-    return false;
+    return _word == otherWord._word;
 }
 
 // Check if this is less than otherWord
 bool Word::operator<(const Word &otherWord)
 {
-    return false;
+    return _word < otherWord._word;
 }
 
 // Check if this is greater than otherWord
 bool Word::operator>(const Word &otherWord)
 {
-    return false;
+    return _word > otherWord._word;
 }
