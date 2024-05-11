@@ -164,4 +164,12 @@ void BST<T1>::insert(T1 data)
 template <class T1>
 void BST<T1>::increment(T1 data)
 {
+    // Search for the node containing the data
+    Node<T1>* node = searchData(_root, data);
+    
+    // If node is found, increment it's count
+    if (node != nullptr) {
+        // Increment the count of the node
+        node->setData(node->getData() + 1);
+    }
 }
