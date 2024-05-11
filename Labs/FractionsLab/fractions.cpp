@@ -99,10 +99,13 @@ int fractions::Fraction::gcd(int a, int b)
 bool fractions::Fraction::operator==(Fraction const &frac)
 {
     bool testEqual = false;
-    if(frac._numerator == _numerator && frac._denominator == _denominator)
+    if(frac._numerator == _numerator && frac._denominator == _denominator) {
+        testEqual = true;
+    }
+    return testEqual;
 }
 
 ostream &fractions::operator<<(ostream &os, const Fraction &frac)
 {
-    return os;
+    return os << frac._numerator << "/" << frac._denominator << endl;
 }
